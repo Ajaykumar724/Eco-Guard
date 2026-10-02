@@ -26,14 +26,12 @@
 }
 
 .brand-mark {
-  display: grid;
+  display: block;
   width: 39px;
   height: 39px;
-  place-items: center;
-  border: 1px solid rgba(16, 119, 78, 0.12);
-  border-radius: 50%;
-  background: #f1fbf5;
-  font-size: 23px;
+  flex: 0 0 auto;
+  border-radius: 6px;
+  object-fit: contain;
 }
 
 .brand strong {
@@ -72,7 +70,6 @@
 .brand-sidebar .brand-mark {
   width: 34px;
   height: 34px;
-  font-size: 20px;
 }
 
 .side-nav {
@@ -406,10 +403,22 @@
 .status-hot { background: #ef8b18; }
 .status-good { background: #118a5c; }
 .status-warn { color: #614900; background: #f5d34c; }
+.status-unavailable { color: #586b61; background: #dfe9e3; }
+.status-loading { color: #586b61; background: #e7eee9; }
+.metric-value-muted { color: #77887e; font-size: 12px; }
+.metric-skeleton { display: inline-block; width: 48px; height: 15px; border-radius: 3px; background: linear-gradient(90deg, #e7eee9 25%, #f3f6f4 50%, #e7eee9 75%); background-size: 200% 100%; animation: metric-shimmer 1.25s linear infinite; }
+
+@keyframes metric-shimmer { to { background-position: -200% 0; } }
 
 .risk-alert { display: flex; min-height: 43px; align-items: center; gap: 9px; padding: 7px 10px; border: 1px solid #f3c9c9; border-radius: 8px; background: linear-gradient(90deg, #fff4f3, #fffafa); }
+.risk-alert.risk-good { border-color: #cce9d9; background: linear-gradient(90deg, #f1fbf5, #fbfefc); }
+.risk-alert.risk-neutral { border-color: #d9e6df; background: linear-gradient(90deg, #f6faf7, #fff); }
 .risk-icon { display: grid; width: 27px; height: 27px; flex: 0 0 auto; place-items: center; border-radius: 6px; color: white; background: #ec4d58; font-size: 18px; font-weight: 800; }
 .risk-alert strong { display: block; color: #d9424a; font-size: 9px; }
+.risk-good .risk-icon { background: #118a5c; }
+.risk-good strong { color: #118a5c; }
+.risk-neutral .risk-icon { background: #7b8b82; }
+.risk-neutral strong { color: #64766b; }
 .risk-alert p { margin-top: 2px; color: #697c74; font-size: 7px; line-height: 1.35; }
 .risk-alert button { margin-left: auto; border: 0; color: #c86c71; background: transparent; font-size: 18px; }
 
@@ -438,6 +447,7 @@
 .map-panel { padding-bottom: 8px; }
 .map-content { display: grid; grid-template-columns: minmax(0, 1fr) 55px; gap: 7px; margin-top: 7px; }
 .map-visual { position: relative; min-height: 108px; overflow: hidden; border: 1px solid #d9e6db; border-radius: 6px; background-color: #e8f3e7; background-image: linear-gradient(30deg, transparent 47%, rgba(255,255,255,.65) 48%, rgba(255,255,255,.65) 51%, transparent 52%), linear-gradient(120deg, transparent 48%, rgba(255,255,255,.8) 49%, rgba(255,255,255,.8) 52%, transparent 53%), repeating-linear-gradient(0deg, transparent 0 23px, rgba(152, 198, 158, .22) 24px 25px); }
+.map-unavailable { display: grid; place-items: center; padding: 12px; color: #63776b; background: #f3f8f4; font-size: 8px; text-align: center; }
 .map-visual svg { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: #a4cda8; stroke-width: 2; }
 .map-visual svg .map-road { stroke: #fff; stroke-width: 5; }
 .map-pin { position: absolute; display: grid; width: 17px; height: 17px; place-items: center; border: 2px solid #fff; border-radius: 50% 50% 50% 1px; color: #fff; background: #e74c4e; box-shadow: 0 1px 3px #6d8c73; font-size: 7px; transform: rotate(-45deg); }
@@ -447,7 +457,7 @@
 .map-legend span { display: flex; align-items: center; gap: 4px; }
 .legend-dot { width: 6px; height: 6px; border-radius: 50%; }
 .legend-dot.good { background: #36a858; }.legend-dot.moderate { background: #e9b72e; }.legend-dot.poor { background: #f28b27; }.legend-dot.unhealthy { background: #e34c4d; }
-.map-link { display: block; margin: 4px auto 0; border: 0; color: #208b60; background: transparent; cursor: pointer; font: inherit; font-size: 8px; font-weight: 700; }
+.map-link { display: block; margin: 4px auto 0; border: 0; color: #71857a; background: transparent; font: inherit; font-size: 8px; }
 
 .community-panel { padding-bottom: 6px; }
 .community-action { display: flex; min-height: 31px; align-items: center; gap: 7px; color: #486155; font-size: 8px; }
@@ -493,6 +503,7 @@
 
 .forecast-panel { padding: 10px; }
 .forecast-days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 3px; margin-top: 9px; }
+.forecast-days p { grid-column: 1 / -1; margin: 8px 0; color: #75867c; font-size: 8px; text-align: center; }
 .forecast-day { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 5px 1px; border-radius: 5px; background: #f4faf6; }
 .forecast-day small { color: #839289; font-size: 7px; }
 .forecast-day span { color: #edaa2c; font-size: 13px; }

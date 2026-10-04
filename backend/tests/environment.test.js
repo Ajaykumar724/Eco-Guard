@@ -8,6 +8,89 @@ import { normalizeWeatherResponse } from '../services/weatherService.js'
 import { getWaterQuality, normalizeWaterResponse } from '../services/waterQualityService.js'
 import { getWasteData, normalizeWasteResponse } from '../services/wasteService.js'
 import { createEnvironmentService } from '../services/environmentService.js'
+import {
+  buildChatCompletionsEndpoint,
+  extractChatCompletionText,
+  extractStreamChunk,
+  normalizeProviderError,
+  parseChatCompletionStream,
+  parseRecommendations,
+} from '../services/ecoAssistant.js'
+
+test('Bedrock Mantle base URL resolves to its Chat Completions endpoint', () => {
+  assert.equal(
+    buildChatCompletionsEndpoint('https://bedrock-mantle.us-east-1.api.aws/v1').href,
+    'https://bedrock-mantle.us-east-1.api.aws/v1/chat/completions',
+  )
+  assert.equal(
+    buildChatCompletionsEndpoint('https://example.test/v1/').href,
+    'https://example.test/v1/chat/completions',
+  )
+})
+
+test('assistant reads OpenAI-compatible chat completion content', () => {
+  assert.equal(extractChatCompletionText({ choices: [{ message: { content: ' EcoGuard answer ' } }] }), 'EcoGuard answer')
+  assert.equal(extractChatCompletionText({ choices: [{ message: { content: [
+    { type: 'text', text: 'First part. ' },
+    { type: 'text', text: 'Second part.' },
+  ] } }] }), 'First part. Second part.')
+  assert.equal(extractChatCompletionText({ choices: [] }), '')
+})
+
+test('assistant stream extracts incremental text and completion markers', () => {
+  assert.equal(
+    extractStreamChunk('data: {"choices":[{"delta":{"content":"Hello "}}]}'),
+    'Hello ',
+  )
+  assert.equal(
+    extractStreamChunk('data: {"choices":[{"delta":{"content":[{"type":"text","text":"world"}]}}]}'),
+    'world',
+  )
+  assert.equal(extractStreamChunk('data: [DONE]'), null)
+  assert.equal(extractStreamChunk('data: {"choices":[{"delta":{"role":"assistant"}}]}'), '')
+})
+
+test('assistant stream returns content and rejects an empty provider stream', async () => {
+  const stream = (content) => new ReadableStream({
+    start(controller) {
+      controller.enqueue(new TextEncoder().encode(content))
+      controller.close()
+    },
+  })
+  const chunks = []
+  for await (const chunk of parseChatCompletionStream(stream(
+    'data: {"choices":[{"delta":{"content":"Hello"}}]}\n\ndata: [DONE]\n\n',
+  ))) chunks.push(chunk)
+  assert.deepEqual(chunks, ['Hello'])
+
+  await assert.rejects(
+    async () => {
+      const emptyChunks = []
+      for await (const chunk of parseChatCompletionStream(stream(
+        'data: {"choices":[{"delta":{"role":"assistant"}}]}\n\ndata: [DONE]\n\n',
+      ))) emptyChunks.push(chunk)
+      return emptyChunks
+    },
+    /finished without sending any text/,
+  )
+})
+
+test('assistant provider timeouts return an actionable gateway timeout', () => {
+  const timeout = new DOMException('The operation timed out', 'TimeoutError')
+  const error = normalizeProviderError(timeout)
+  assert.equal(error.statusCode, 504)
+  assert.match(error.message, /AI_TIMEOUT_MS/)
+})
+
+test('recommendation parser accepts exactly four recommendations', () => {
+  assert.deepEqual(parseRecommendations('["Protect yourself from poor air", "Drink water", "Save water", "Sort waste"]'), [
+    'Protect yourself from poor air', 'Drink water', 'Save water', 'Sort waste',
+  ])
+  assert.deepEqual(parseRecommendations('1. First\n2. Second\n3. Third\n4. Fourth'), [
+    'First', 'Second', 'Third', 'Fourth',
+  ])
+  assert.throws(() => parseRecommendations('["Only one"]'), /exactly four/)
+})
 
 test('AQI status follows the configured US AQI bands', () => {
   assert.deepEqual([0, 51, 101, 151, 201, 301, 501].map(aqiStatus), [

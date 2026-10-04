@@ -32,11 +32,15 @@ function urlFromEnv(name, fallback = '') {
 export const config = {
   port: numberFromEnv('PORT', 3001),
   apiTimeoutMs: numberFromEnv('API_TIMEOUT_MS', 8000),
+  assistantTimeoutMs: Math.max(1000, numberFromEnv('AI_TIMEOUT_MS', 60000)),
   cacheTtlMs: numberFromEnv('API_CACHE_TTL_MS', numberFromEnv('ENVIRONMENT_REFRESH_INTERVAL', 300000)),
   airUrl: urlFromEnv('OPEN_METEO_AIR_URL', 'https://air-quality-api.open-meteo.com/v1/air-quality'),
   weatherUrl: urlFromEnv('OPEN_METEO_WEATHER_URL', 'https://api.open-meteo.com/v1/forecast'),
   waterUrl: urlFromEnv('WATER_API_URL'),
   wasteUrl: urlFromEnv('WASTE_API_URL'),
+  assistantApiKey: process.env.AWS_BEARER_TOKEN_BEDROCK || process.env.OPENAI_API_KEY || '',
+  assistantBaseUrl: urlFromEnv('OPENAI_BASE_URL', 'https://api.openai.com/v1'),
+  assistantModel: process.env.OPENAI_MODEL || 'openai.gpt-oss-120b',
   defaultLatitude: numberFromEnv('DEFAULT_LATITUDE', 28.9845),
   defaultLongitude: numberFromEnv('DEFAULT_LONGITUDE', 77.7064),
   corsOrigins: (process.env.CORS_ORIGINS || 'http://localhost:5173,http://127.0.0.1:5173')

@@ -1,5 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { EnvironmentCard } from './components/EnvironmentCard.jsx'
+import EcoAssistant from './assistant/EcoAssistant.jsx'
+import { fetchRecommendations } from './assistant/api.js'
 import logo from './assets/logo.png'
 import { useEnvironmentData } from './hooks/useEnvironmentData.js'
 import './App.css'
@@ -13,13 +15,6 @@ const navigation = [
   ['◉', 'AI Eco Coach'],
   ['♧', 'Community'],
   ['♙', 'Profile'],
-]
-
-const recommendations = [
-  ['×', 'Avoid prolonged outdoor activity', 'coral'],
-  ['◉', 'Stay hydrated', 'blue'],
-  ['▤', 'Reduce unnecessary water usage', 'sky'],
-  ['♻', "Separate today’s waste", 'green'],
 ]
 
 function Icon({ children, className = '' }) {
@@ -48,7 +43,8 @@ function App() {
   const [challengeJoined, setChallengeJoined] = useState(false)
   const [challengeFeedback, setChallengeFeedback] = useState('')
   const [search, setSearch] = useState('')
-  const [notice, setNotice] = useState(false)
+  const [assistantOpen, setAssistantOpen] = useState(false)
+  const [recommendationState, setRecommendationState] = useState({ context: null, items: [], error: '' })
   const air = environmentData?.air
   const heat = environmentData?.heat
   const water = environmentData?.water
@@ -57,6 +53,19 @@ function App() {
   const riskClass = environmentLoading || (!air?.available && !heat?.available)
     ? 'risk-neutral'
     : elevatedConditions ? 'risk-high' : 'risk-good'
+
+  useEffect(() => {
+    if (!environmentData) return undefined
+    const controller = new AbortController()
+    fetchRecommendations(environmentData, controller.signal)
+      .then((items) => setRecommendationState({ context: environmentData, items, error: '' }))
+      .catch((error) => {
+        if (!controller.signal.aborted) {
+          setRecommendationState({ context: environmentData, items: [], error: error.message })
+        }
+      })
+    return () => controller.abort()
+  }, [environmentData])
 
   return (
     <div className="app-shell">
@@ -100,10 +109,23 @@ function App() {
           <div className="topbar-tools">
             <div className="weather"><span>🌤️</span><div><strong>{environmentLoading ? 'Loading...' : environmentData?.heat.available ? `${environmentData.heat.value.toFixed(0)}°` : 'Unavailable'}</strong><small>{environmentData?.heat.status ?? 'Current temperature'}</small></div></div>
             <div className="city-chip"><span className="pin">●</span><div><strong>{formatLocation(currentLocation)}</strong><small>{currentLocation ? 'Selected coordinates' : 'Current location'}</small></div></div>
-            <button className={`icon-button notification ${notice ? 'has-notice' : ''}`} type="button" aria-label="Notifications" onClick={() => setNotice(!notice)} title="Notifications">♧<i /></button>
+            <button
+              className={`assistant-toggle ${assistantOpen ? 'is-open' : ''}`}
+              type="button"
+              aria-label={assistantOpen ? 'Close EcoGuard AI assistant' : 'Open EcoGuard AI assistant'}
+              aria-expanded={assistantOpen}
+              onClick={() => setAssistantOpen((open) => !open)}
+              title="Ask EcoGuard AI"
+            >◉</button>
             <button className="user-menu" type="button" onClick={() => setActiveNav('Profile')}><span className="avatar">A</span><span className="user-copy"><strong>Ajay Kumar</strong><small>Eco Protector</small></span><span className="chevron">⌄</span></button>
           </div>
         </header>
+
+        <EcoAssistant
+          context={environmentData}
+          open={assistantOpen}
+          onClose={() => setAssistantOpen(false)}
+        />
 
         <main className="dashboard-content">
           <section className="welcome-strip">
@@ -125,9 +147,20 @@ function App() {
 
               <section className="panel recommendation-panel">
                 <PanelTitle icon="▤">Today’s Recommendations</PanelTitle>
-                <ul className="recommendation-list">
-                  {recommendations.map(([icon, text, color]) => <li key={text}><span className={`recommendation-icon ${color}`}>{icon}</span><span>{text}</span><button type="button" aria-label={`View ${text}`}>›</button></li>)}
-                </ul>
+                {!environmentData
+                  ? <p className="recommendation-status" role={environmentLoading ? 'status' : 'alert'}>{environmentLoading ? 'Waiting for live environmental data…' : 'Environmental data is unavailable.'}</p>
+                  : recommendationState.context !== environmentData
+                    ? <p className="recommendation-status" role="status">Generating recommendations from current conditions…</p>
+                    : recommendationState.error
+                      ? <p className="recommendation-status recommendation-error" role="alert">{recommendationState.error}</p>
+                    : <ul className="recommendation-list">
+                      {recommendationState.items.map((text, index) => (
+                        <li key={`${index}-${text}`}>
+                          <span className={`recommendation-icon ${['coral', 'blue', 'sky', 'green'][index]}`}>{['×', '◉', '▤', '♻'][index]}</span>
+                          <span>{text}</span>
+                        </li>
+                      ))}
+                    </ul>}
               </section>
 
               <section className="panel map-panel">
@@ -240,9 +273,8 @@ function App() {
 
               <section className="panel coach-panel">
                 <PanelTitle icon="◉">Eco Coach</PanelTitle>
-                <div className="coach-greeting">What should I do today?</div>
-                <div className="coach-plan"><strong><span>✦</span> Current Conditions</strong><p>{air?.available ? `Air quality is ${air.status.toLowerCase()}.` : 'Air-quality data is unavailable.'} {heat?.available ? `Temperature is ${heat.value.toFixed(1)}°C (${heat.status.toLowerCase()}).` : 'Temperature data is unavailable.'}</p><ul><li>{air?.available && air.value > 100 ? 'Limit prolonged outdoor activity while AQI is elevated' : 'Check current local conditions before outdoor activity'}</li><li>{heat?.available && heat.value >= 30 ? 'Limit strenuous activity during high temperatures' : 'Stay hydrated during outdoor activity'}</li><li>{water?.available ? `Water source: ${water.status}` : 'Water-quality source is not configured'}</li><li>{waste?.available ? `Waste source: ${waste.status}` : 'Waste-data source is not configured'}</li></ul><small>Recommendations reflect the latest available readings.</small></div>
-                <form className="coach-input" onSubmit={(event) => { event.preventDefault(); setSearch('Eco Coach: ' + search) }}><input aria-label="Ask the Eco Coach" placeholder="Ask anything…" /><button type="submit" aria-label="Send message">↗</button></form>
+                <p className="coach-description">Your AI assistant can answer questions using current environmental readings and general sustainability guidance.</p>
+                <button className="outline-button" type="button" onClick={() => setAssistantOpen(true)}>Ask EcoGuard AI →</button>
               </section>
             </aside>
           </section>

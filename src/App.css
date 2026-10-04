@@ -91,7 +91,7 @@
   cursor: pointer;
   font: inherit;
   font-size: 11px;
-  text-align: left;
+  text-align: center;
   transition: background 160ms ease, color 160ms ease;
 }
 
@@ -202,14 +202,16 @@
   top: 0;
   z-index: 4;
   display: flex;
+  justify-content:space-between;
   height: 66px;
   align-items: center;
-  gap: 25px;
   padding: 0 24px;
   border-bottom: 1px solid #e0ebe5;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(16px);
+   
 }
+ 
 
 .top-brand {
   width: 250px;
@@ -221,7 +223,10 @@
 .top-brand small { font-size: 8px; }
 
 .search-box {
+  position: absolute;
+  left: 50%;
   display: flex;
+  justify-content:center ;
   width: min(375px, 36vw);
   height: 34px;
   align-items: center;
@@ -231,9 +236,36 @@
   border-radius: 18px;
   color: #82958e;
   background: #fafdfc;
+  margin: 0;
+  flex-grow: 0 ;
+  transform: translateX(-50%);
+
+   
 }
 
 .search-box > span { font-size: 19px; line-height: 1; }
+
+.search-box .search-mic {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  flex: 0 0 auto;
+  place-items: center;
+  margin-left: auto;
+  border-radius: 50%;
+  color: #13835d;
+  background: #eaf7ef;
+}
+
+.search-mic svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
 
 .search-box input,
 .coach-input input {
@@ -655,7 +687,13 @@
   .user-menu { padding-left: 8px; }
   .user-copy,
   .chevron { display: none; }
-  .search-box { grid-column: 1 / -1; grid-row: 2; width: auto; }
+  .search-box {
+    position: static;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: auto;
+    transform: none;
+  }
   .dashboard-content { padding: 0 10px 12px; }
   .welcome-strip { height: 62px; margin-bottom: 10px; }
   .welcome-place { min-width: 145px; padding: 0 11px; }

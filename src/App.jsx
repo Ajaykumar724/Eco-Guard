@@ -72,7 +72,7 @@ function App() {
       <aside className="sidebar">
         <a className="brand brand-sidebar" href="#dashboard" aria-label="EcoGuard home">
           <img className="brand-mark" src={logo} alt="" />
-          <span><strong>ECOGUARD</strong><small>Cleaner Air. Safer Water.</small></span>
+          <span><strong>ECOGUARD</strong><small>Cleaner Air | Safer Water | Resilient Cities</small></span>
         </a>
         <nav className="side-nav" aria-label="Main navigation">
           {navigation.map(([icon, label]) => (
@@ -97,14 +97,37 @@ function App() {
 
       <div className="main-area" id="dashboard">
         <header className="topbar">
-          <a className="brand top-brand" href="#dashboard" aria-label="EcoGuard home">
+          <a className="brand top-brand" href="#" aria-label="EcoGuard home">
             <img className="brand-mark" src={logo} alt="" />
-            <span><strong>ECOGUARD</strong><small>Cleaner Air. Safer Water. Resilient Cities.</small></span>
+            <span>
+              <strong style={{display:'block', fontSize:'22px', fontWeight:'bold'}}>
+                ECOGUARD
+                </strong>
+                <small style={{
+              fontSize:'11px',
+              fontWeight:'400',
+              letterSpacing:'0.1px',
+              color:'#15803d',
+              texttransform:'uppercase',
+              marginTop:'2px',
+              fontStyle:'italic',
+              display:'block',
+                                  
+            }}>
+              Cleaner Air | Safer Water | Resilient Cities
+              </small>
+              </span>
           </a>
           <label className="search-box">
             <span aria-hidden="true">⌕</span>
-            <input aria-label="Search" placeholder="Search for city, action, or anything…" value={search} onChange={(event) => setSearch(event.target.value)} />
+            <input aria-label="Search" placeholder= " Ask Eco-Guard... "  value={search} onChange={(event) => setSearch(event.target.value)} />
             {search && <button type="button" onClick={() => setSearch('')} aria-label="Clear search">×</button>}
+            <span className="search-mic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <rect x="9" y="3" width="6" height="12" rx="3" />
+                <path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21m-4 0h8" />
+              </svg>
+            </span>
           </label>
           <div className="topbar-tools">
             <div className="weather"><span>🌤️</span><div><strong>{environmentLoading ? 'Loading...' : environmentData?.heat.available ? `${environmentData.heat.value.toFixed(0)}°` : 'Unavailable'}</strong><small>{environmentData?.heat.status ?? 'Current temperature'}</small></div></div>

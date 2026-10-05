@@ -4,6 +4,8 @@ import EcoAssistant from './assistant/EcoAssistant.jsx'
 import { fetchRecommendations } from './assistant/api.js'
 import logo from './assets/logo.png'
 import { useEnvironmentData } from './hooks/useEnvironmentData.js'
+import EcoGames from './components/EcoGames.jsx'
+import challengeData from './data.json'
 import './App.css'
 
 const navigation = [
@@ -36,15 +38,24 @@ function formatLocation(location) {
     : 'Locating...'
 }
 
+function getLocalDateKey(date = new Date()) {
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
+
 function App() {
   const { data: environmentData, loading: environmentLoading, location: currentLocation } = useEnvironmentData()
   const [activeNav, setActiveNav] = useState('Dashboard')
-  const [selectedAnswer, setSelectedAnswer] = useState('B')
-  const [challengeJoined, setChallengeJoined] = useState(false)
-  const [challengeFeedback, setChallengeFeedback] = useState('')
+  const [challengeProgress, setChallengeProgress] = useState({ date: '', selectedAnswer: '', completed: false, feedback: '' })
   const [search, setSearch] = useState('')
   const [assistantOpen, setAssistantOpen] = useState(false)
   const [recommendationState, setRecommendationState] = useState({ context: null, items: [], error: '' })
+  const dailyChallenge = challengeData.challenges.find(({ date }) => date === getLocalDateKey())
+  const currentChallengeProgress = challengeProgress.date === dailyChallenge?.date
+    ? challengeProgress
+    : { selectedAnswer: '', completed: false, feedback: '' }
   const air = environmentData?.air
   const heat = environmentData?.heat
   const water = environmentData?.water
@@ -205,24 +216,63 @@ function App() {
             <div className="column column-middle">
               <section className="panel challenge-panel">
                 <PanelTitle icon="♧">Today’s Eco Challenge</PanelTitle>
-                <div className="challenge-points">✦ +20 Points</div>
-                <div className="challenge-heading"><span className="challenge-flame">♨</span><div><h2>Beat the Heat</h2><p>{heat?.available ? `Current temperature is ${heat.value.toFixed(1)}°C. Which action saves the most energy?` : 'Temperature data is unavailable. Which action saves the most energy?'}</p></div><span className="thermometer">🌡️</span></div>
-                <div className="answer-list" role="radiogroup" aria-label="Choose an energy-saving action">
-                  {[
-                    ['A', 'Set AC to 18°C'],
-                    ['B', 'Set AC around 24–26°C'],
-                    ['C', 'Keep windows open with AC'],
-                  ].map(([key, answer]) => <button type="button" className={`answer-option ${selectedAnswer === key ? 'selected' : ''}`} key={key} onClick={() => setSelectedAnswer(key)} role="radio" aria-checked={selectedAnswer === key}><span>{key}</span>{answer}</button>)}
-                </div>
-                <button className={`primary-button ${challengeJoined ? 'button-done' : ''}`} type="button" onClick={() => {
-                  if (selectedAnswer === 'B') {
-                    setChallengeJoined(true)
-                    setChallengeFeedback('Correct! You earned 20 Eco Points.')
-                  } else {
-                    setChallengeFeedback('Not quite. Set AC around 24–26°C to save energy.')
-                  }
-                }}>{challengeJoined ? '✓ CHALLENGE COMPLETED' : '▶  PLAY & EARN POINTS'}</button>
-                {challengeFeedback && <p className={`challenge-feedback ${challengeJoined ? '' : 'challenge-error'}`}>{challengeFeedback}</p>}
+                {dailyChallenge ? (
+                  <>
+                    <div className="challenge-points">✦ +{dailyChallenge.points} Points</div>
+                    <div className="challenge-heading"><span className="challenge-flame">♨</span><div><h2>{dailyChallenge.title}</h2><p>{dailyChallenge.question}</p></div><span className="thermometer">🌡️</span></div>
+                    <div className="answer-list" role="radiogroup" aria-label={dailyChallenge.question}>
+                      {dailyChallenge.options.map(({ id, text }) => (
+                        <button
+                          type="button"
+                          className={`answer-option ${currentChallengeProgress.selectedAnswer === id ? 'selected' : ''}`}
+                          key={id}
+                          onClick={() => setChallengeProgress({ date: dailyChallenge.date, selectedAnswer: id, completed: false, feedback: '' })}
+                          role="radio"
+                          aria-checked={currentChallengeProgress.selectedAnswer === id}
+                          disabled={currentChallengeProgress.completed}
+                        >
+                          <span>{id}</span>{text}
+                        </button>
+                      ))}
+                    </div>
+                    <button
+                      className={`primary-button ${currentChallengeProgress.completed ? 'button-done' : ''}`}
+                      type="button"
+                      disabled={currentChallengeProgress.completed}
+                      onClick={() => {
+                        if (!dailyChallenge.options.some(({ id }) => id === currentChallengeProgress.selectedAnswer)) {
+                          setChallengeProgress({
+                            date: dailyChallenge.date,
+                            selectedAnswer: '',
+                            completed: false,
+                            feedback: 'Choose an answer before submitting.',
+                          })
+                          return
+                        }
+
+                        const isCorrect = currentChallengeProgress.selectedAnswer === dailyChallenge.answer
+                        setChallengeProgress({
+                          date: dailyChallenge.date,
+                          selectedAnswer: currentChallengeProgress.selectedAnswer,
+                          completed: isCorrect,
+                          feedback: isCorrect
+                            ? `${dailyChallenge.correctFeedback} You earned ${dailyChallenge.points} Eco Points.`
+                            : dailyChallenge.incorrectFeedback,
+                        })
+                      }}
+                    >
+                      {currentChallengeProgress.completed ? '✓ CHALLENGE COMPLETED' : '▶  PLAY & EARN POINTS'}
+                    </button>
+                    {currentChallengeProgress.feedback && (
+                      <p className={`challenge-feedback ${currentChallengeProgress.completed ? '' : 'challenge-error'}`} role="status">
+                        {currentChallengeProgress.feedback}
+                      </p>
+                    )}
+                  </>
+                ) : (
+                  <p className="challenge-feedback" role="status">No Eco Challenge is scheduled for today. Check back tomorrow!</p>
+                )}
+                <EcoGames games={challengeData.games} />
                 <div className="streak-row"><span>♨ 7 Day Streak</span><div className="streak-dots"><i /><i /><i /><i /><i /><i /><i /></div><strong>★ 340</strong><small>Eco Points</small></div>
               </section>
 

@@ -186,20 +186,20 @@ function App() {
                     </ul>}
               </section>
 
-              <section className="panel map-panel">
+              {/* <section className="panel map-panel">
                 <PanelTitle icon="♧" action="View All">Live Map &amp; Sensors</PanelTitle>
                 <div className="map-content">
                   <div className="map-visual map-unavailable" role="status">Live map and sensor feed unavailable</div>
                 </div>
                 <p className="map-link">No map source configured</p>
-              </section>
+              </section> */}
 
-              <section className="panel community-panel">
+              {/* <section className="panel community-panel">
                 <PanelTitle icon="♧" action="View All">Community Actions</PanelTitle>
                 <div className="community-action"><span className="community-icon yellow">♻</span><span>Report waste in your area</span><small>Live feed unavailable</small></div>
                 <div className="community-action"><span className="community-icon teal">♣</span><span>Suggest tree plantation</span><small>Live feed unavailable</small></div>
                 <div className="community-action"><span className="community-icon blue">✦</span><span>Join a clean-up drive</span><small>Live feed unavailable</small></div>
-              </section>
+              </section> */}
             </div>
 
             <div className="column column-middle">
@@ -226,7 +226,7 @@ function App() {
                 <div className="streak-row"><span>♨ 7 Day Streak</span><div className="streak-dots"><i /><i /><i /><i /><i /><i /><i /></div><strong>★ 340</strong><small>Eco Points</small></div>
               </section>
 
-              <section className="panel impact-panel">
+              {/* <section className="panel impact-panel">
                 <PanelTitle icon="♣" action="View All">Your Impact</PanelTitle>
                 <div className="impact-grid">
                   <div className="impact-stat"><span>♣</span><strong>Unavailable</strong><small>Actions<br />Completed</small></div>
@@ -234,17 +234,17 @@ function App() {
                   <div className="impact-stat"><span>♧</span><strong>Unavailable</strong><small>Trees<br />Suggested</small></div>
                   <div className="impact-stat"><span>♆</span><strong>Unavailable</strong><small>Water<br />Saved</small></div>
                 </div>
-              </section>
+              </section> */}
 
-              <section className="panel forecast-panel">
+              {/* <section className="panel forecast-panel">
                 <PanelTitle icon="☼">7-Day Forecast</PanelTitle>
                 <div className="forecast-days"><p>{environmentLoading ? 'Loading forecast...' : 'Forecast data unavailable'}</p></div>
                 <div className="forecast-note"><span>↗</span> No forecast source is configured.</div>
-              </section>
+              </section> */}
             </div>
 
             <div className="column column-right">
-              <section className="panel government-panel">
+              {/* <section className="panel government-panel">
                 <PanelTitle icon="♜">Government Action</PanelTitle>
                 <div className="panel-meta">{environmentData ? `Readings updated ${new Date(environmentData.updatedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` : 'Awaiting environmental data'}</div>
                 <h3>Government data source</h3>
@@ -253,23 +253,23 @@ function App() {
                 <div className="progress-track" />
                 <button className="outline-button" type="button" onClick={() => setActiveNav('Government Action')}>View Action Details →</button>
                 <div className="authority"><span className="authority-icon">♜</span><div><strong>Responsible Authority</strong><small>Government source not configured</small><small>Air quality: Open-Meteo</small><button type="button" onClick={() => setActiveNav('Government Action')}>View Departments →</button></div></div>
-              </section>
+              </section> */}
 
               <section className="panel insights-panel">
                 <PanelTitle icon="✦">Current Air Readings</PanelTitle>
                 <p className="insight-copy">{air?.available ? `AQI ${Math.round(air.value)} (${air.status}); PM2.5 ${Number.isFinite(air.pm25) ? `${air.pm25} µg/m³` : 'unavailable'}; PM10 ${Number.isFinite(air.pm10) ? `${air.pm10} µg/m³` : 'unavailable'}.` : 'Air-quality readings are unavailable.'}</p>
               </section>
 
-              <section className="panel partnership-panel">
+              {/* <section className="panel partnership-panel">
                 <PanelTitle icon="♧">Government + Citizens</PanelTitle>
                 <p className="panel-subtitle">Together for a greener city.</p>
                 <div className="partner-columns"><div><strong>🏛 Authorities Do</strong><span>✓ Monitor</span><span>✓ Respond</span><span>✓ Inspect</span><span>✓ Implement Projects</span></div><div><strong>● You Do</strong><span>✓ Follow Recommendations</span><span>✓ Complete Challenges</span><span>✓ Report Issues</span><span>✓ Spread Awareness</span></div></div>
                 <button type="button" className="primary-button partnership-button" onClick={() => setActiveNav('Community')}>♣ Same Goal → A Cleaner, Greener Community</button>
-              </section>
+              </section> */}
             </div>
 
             <aside className="column column-rail">
-              <section className="panel progress-panel">
+              {/* <section className="panel progress-panel">
                 <PanelTitle icon="♣">Environmental Data</PanelTitle>
                 <div className="panel-meta">{currentLocation ? formatLocation(currentLocation) : 'Current location'} <span>{environmentData ? 'Live status' : 'Awaiting data'}</span></div>
                 {[
@@ -279,9 +279,9 @@ function App() {
                   ['♻', 'Waste management', waste?.available ? waste.status : environmentLoading ? 'Loading...' : 'Data unavailable', 'lime'],
                 ].map(([icon, label, value, color]) => <div className="progress-item" key={label}><span className={`progress-icon ${color}`}>{icon}</span><div className="progress-info"><div><strong>{label}</strong><b>{value}</b></div></div></div>)}
                 <button type="button" className="outline-button" onClick={() => setActiveNav('City Progress')}>See City Action Plan →</button>
-              </section>
+              </section> */}
 
-              <section className="panel waste-panel">
+              {/* <section className="panel waste-panel">
                 <PanelTitle icon="♻">Waste Management Data</PanelTitle>
                 <div className="waste-content"><img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=320&q=80" alt="Sorted recyclable materials" /><div className="waste-breakdown">
                   {[
@@ -292,7 +292,7 @@ function App() {
                   ].map(([icon, label, value]) => <span key={label}><i className="waste-icon plastic">{icon}</i>{label}<b>{environmentLoading ? 'Loading...' : Number.isFinite(value) ? `${value}%` : 'Unavailable'}</b></span>)}
                 </div></div>
                 <p className="waste-note"><span>♣</span><strong>{waste?.available ? waste.status : 'Waste data unavailable'}</strong></p>
-              </section>
+              </section> */}
 
               <section className="panel coach-panel">
                 <PanelTitle icon="◉">Eco Coach</PanelTitle>

@@ -59,17 +59,22 @@
 
 .brand-sidebar strong {
   color: #fff;
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .brand-sidebar small {
-  color: #b2d7c9;
-  font-size: 8px;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.9px;
+  margin-top:5px;
+  opacity:0.9;
 }
 
 .brand-sidebar .brand-mark {
-  width: 34px;
-  height: 34px;
+  width:  38px;
+  height:  38px;
+
 }
 
 .side-nav {
@@ -667,8 +672,73 @@
 .waste-note { display: flex; gap: 6px; align-items: center; margin-top: 7px; padding: 6px; border-radius: 5px; color: #438052; background: #effaf2; font-size: 7px; line-height: 1.4; }
 .waste-note > span { color: #2f9a54; font-size: 14px; }
 
-.coach-panel { padding: 10px; }
-.coach-description { margin: 7px 0; color: #708379; font-size: 8px; line-height: 1.5; }
+.coach-panel {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: 2px 9px;
+  padding: 12px;
+  border-color: #ccebd9;
+  background: linear-gradient(120deg, #f4fff7, #e4f8ec);
+  box-shadow: 0 4px 14px rgba(27, 139, 82, 0.1);
+}
+
+.coach-panel::before {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid #c3ebd0;
+  border-radius: 50%;
+  color: #087b50;
+  background: radial-gradient(circle at 35% 30%, #fff 0 12%, transparent 13%), linear-gradient(145deg, #d7f5df, #a8e7bd);
+  content: '◉';
+  font-size: 25px;
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.65);
+}
+
+.coach-panel .panel-title { display: contents; }
+.coach-panel .panel-title-label {
+  grid-column: 2;
+  grid-row: 1;
+  color: #176044;
+  white-space: nowrap;
+}
+.coach-panel .panel-title-label .icon { display: none; }
+.coach-description {
+  grid-column: 2;
+  grid-row: 2;
+  margin: 1px 0 0;
+  color: #57806a;
+  font-size: 8px;
+  line-height: 1.4;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.coach-panel .outline-button {
+  grid-column: 3;
+  grid-row: 1 / 3;
+  min-height: 32px;
+  margin: 0;
+  padding: 6px 9px;
+  border: 0;
+  border-radius: 18px;
+  color: #fff;
+  background: linear-gradient(135deg, #10a86a, #08794e);
+  box-shadow: 0 3px 8px rgba(8, 121, 78, 0.18);
+  font-size: 7px;
+  white-space: nowrap;
+}
+
+.coach-panel .outline-button:hover {
+  background: linear-gradient(135deg, #0b985f, #066b45);
+}
 
 .assistant-drawer {
   position: fixed;
@@ -729,7 +799,7 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 1420px) {
+@media (max-width: 980px) {
   .sidebar { width: 68px; }
   .brand-sidebar { justify-content: center; padding: 0; }
   .brand-sidebar > span:last-child,
@@ -854,6 +924,81 @@
   .coach-description { font-size: 9px; }
   .assistant-drawer { top: 106px; right: 10px; width: min(360px, calc(100vw - 20px)); height: min(520px, calc(100vh - 118px)); }
   .dashboard-footer > span:first-child { line-height: 1.5; }
+}
+
+@media (min-width: 981px) {
+  .sidebar { width: 196px; }
+  .main-area { margin-left: 196px; }
+
+  .topbar {
+    height: 64px;
+    padding: 0 22px;
+    background: rgba(249, 255, 251, 0.96);
+  }
+
+  .dashboard-content { padding: 12px 16px 18px; }
+
+  .welcome-strip {
+    height: 58px;
+    margin-bottom: 12px;
+    border: 1px solid #dcece3;
+    border-radius: 10px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .column-left,
+  .column-right,
+  .column-rail { display: contents; }
+
+  .metric-grid {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .metric-card {
+    min-height: 94px;
+    padding: 12px 12px 11px 58px;
+    border-radius: 11px;
+  }
+
+  .metric-icon {
+    top: 18px;
+    left: 14px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .metric-label { font-size: 9px; }
+  .metric-card > small { font-size: 8px; }
+  .status-pill { right: 10px; bottom: 9px; font-size: 8px; }
+
+  .risk-alert {
+    grid-column: 1 / -1;
+    min-height: 48px;
+    padding: 8px 12px;
+    border-radius: 10px;
+  }
+
+  .recommendation-panel,
+  .challenge-panel,
+  .insights-panel,
+  .coach-panel {
+    border-radius: 11px;
+  }
+
+  .recommendation-panel { grid-column: 1; padding: 14px; }
+  .challenge-panel { grid-column: 2; padding: 14px; }
+  .insights-panel,
+  .coach-panel { grid-column: 3; padding: 14px; }
+
+  .panel-title-label { font-size: 11px; }
+  .recommendation-list { gap: 5px; margin-top: 10px; }
+  .recommendation-list li { min-height: 34px; gap: 9px; font-size: 9px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

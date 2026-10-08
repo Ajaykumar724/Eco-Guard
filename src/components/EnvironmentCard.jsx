@@ -5,7 +5,7 @@ export function EnvironmentCard({ type, icon, title, source, loading }) {
   const isAvailable = item.available === true
   const value = getValue(type, item)
   const detail = getDetail(type, item)
-  const status = loading ? 'Loading...' : isAvailable ? item.status : 'Data unavailable'
+  const status = loading ? 'Loading...' : item.status ?? 'Data unavailable'
 
   return (
     <article className={`metric-card metric-${type}`} aria-busy={loading} aria-live="polite">
@@ -21,18 +21,23 @@ export function EnvironmentCard({ type, icon, title, source, loading }) {
 }
 
 function getValue(type, item) {
-  if (!item.available) return 'Data unavailable'
+  if (!item.available) return item.message ?? 'Data unavailable'
   if (type === 'air') return Number.isFinite(item.value) ? Math.round(item.value) : 'Data unavailable'
   if (type === 'heat') return Number.isFinite(item.value) ? `${item.value.toFixed(1)}°C` : 'Data unavailable'
+  if (type === 'water' && item.phRange) return item.phRange
   if (type === 'water') return getWaterReading(item)?.value ?? item.status ?? 'Data unavailable'
+  if (type === 'waste' && item.goodManagement) return item.goodManagement
   if (type === 'waste' && Number.isFinite(item.score)) return `${item.score}%`
   return item.status || 'Data unavailable'
 }
 
 function getDetail(type, item) {
+  if (item.detail) return item.detail
   if (type === 'air') return 'AQI'
   if (type === 'heat') return 'Temperature'
+  if (type === 'water' && item.phRange) return 'Indicative pH range'
   if (type === 'water') return getWaterReading(item)?.label ?? 'Water quality'
+  if (type === 'waste' && item.goodManagement) return 'Estimated managed waste'
   return Number.isFinite(item.score) ? 'Waste score' : 'Waste status'
 }
 

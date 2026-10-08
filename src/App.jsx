@@ -6,12 +6,25 @@ import logo from './assets/logo.png'
 import { useEnvironmentData } from './hooks/useEnvironmentData.js'
 import EcoGames from './components/EcoGames.jsx'
 import challengeData from './data.json'
+import waterQualityData from './city_water_quality_up_delhi_haryana.json'
+import wasteManagementData from './ecoguard_waste_management_up_haryana_delhi.json'
 import './App.css'
 
 const navigation = [
   ['⌂', 'Dashboard'],
   ['◉', 'AI Eco Coach'],
 ]
+
+function normalizeCityName(city) {
+  return city.trim().replace(/\s+/g, ' ').toLocaleLowerCase()
+}
+
+const waterByCity = new Map(waterQualityData.cities.map((record) => [normalizeCityName(record.city), record]))
+const wasteByCity = new Map(wasteManagementData.cities.map((record) => [normalizeCityName(record.city), record]))
+const cityOptions = Array.from(new Map(
+  [...waterQualityData.cities, ...wasteManagementData.cities]
+    .map(({ city, state }) => [normalizeCityName(city), { city, state }]),
+).values()).sort((first, second) => first.city.localeCompare(second.city))
 
 function Icon({ children, className = '' }) {
   return <span className={`icon ${className}`} aria-hidden="true">{children}</span>
@@ -57,9 +70,13 @@ function App() {
   const { data: environmentData, loading: environmentLoading, location: currentLocation } = useEnvironmentData()
   const [activeNav, setActiveNav] = useState('Dashboard')
   const [challengeProgress, setChallengeProgress] = useState({ date: '', selectedAnswer: '', completed: false, feedback: '' })
-  const [search, setSearch] = useState('')
+  const [selectedCity, setSelectedCity] = useState('')
+  const [citySearch, setCitySearch] = useState('')
   const [assistantOpen, setAssistantOpen] = useState(false)
   const [recommendationState, setRecommendationState] = useState({ context: null, items: [], error: '' })
+  const filteredCityOptions = cityOptions.filter(({ city, state }) => (
+    `${city} ${state}`.toLocaleLowerCase().includes(citySearch.trim().toLocaleLowerCase())
+  ))
   const dailyChallenge = challengeData.challenges.find(({ date }) => date === getLocalDateKey())
   const currentChallengeProgress = challengeProgress.date === dailyChallenge?.date
     ? challengeProgress
@@ -70,6 +87,32 @@ function App() {
   const riskClass = environmentLoading || (!air?.available && !heat?.available)
     ? 'risk-neutral'
     : elevatedConditions ? 'risk-high' : 'risk-good'
+  const waterRecord = waterByCity.get(normalizeCityName(selectedCity))
+  const wasteRecord = wasteByCity.get(normalizeCityName(selectedCity))
+  const waterSource = waterRecord
+    ? {
+      available: true,
+      status: waterRecord.indicative_status.replace(/^./, (letter) => letter.toUpperCase()),
+      phRange: waterRecord.ph_range,
+    }
+    : {
+      available: false,
+      status: selectedCity ? 'Not listed' : 'Select a city',
+      message: selectedCity ? 'No city data' : 'Select a city',
+      detail: selectedCity ? 'Water data unavailable' : 'Choose a city',
+    }
+  const wasteSource = wasteRecord
+    ? {
+      available: true,
+      status: `${wasteRecord.confidence.replace(/^./, (letter) => letter.toUpperCase())} confidence`,
+      goodManagement: wasteRecord.good_management,
+    }
+    : {
+      available: false,
+      status: selectedCity ? 'Not listed' : 'Select a city',
+      message: selectedCity ? 'No city data' : 'Select a city',
+      detail: selectedCity ? 'Waste data unavailable' : 'Choose a city',
+    }
 
   useEffect(() => {
     if (!environmentData) return undefined
@@ -123,7 +166,8 @@ function App() {
               <small>Cleaner Air | Safer Water | Resilient Cities</small>
             </span>
           </a>
-          <label className="search-box">
+
+          {/* <label className="search-box">
             <span aria-hidden="true">⌕</span>
             <input aria-label="Search" placeholder= " Ask Eco-Guard... "  value={search} onChange={(event) => setSearch(event.target.value)} />
             {search && <button type="button" onClick={() => setSearch('')} aria-label="Clear search">×</button>}
@@ -133,7 +177,8 @@ function App() {
                 <path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21m-4 0h8" />
               </svg>
             </span>
-          </label>
+          </label> */}
+
           <div className="topbar-tools">
             <div className="weather"><span>🌤️</span><div><strong>{environmentLoading ? 'Loading...' : environmentData?.heat.available ? `${environmentData.heat.value.toFixed(0)}°` : 'Unavailable'}</strong><small>{environmentData?.heat.status ?? 'Current temperature'}</small></div></div>
             <div className="city-chip"><span className="pin">●</span><div><strong>{formatLocation(currentLocation)}</strong><small>{currentLocation ? 'Selected coordinates' : 'Current location'}</small></div></div>
@@ -146,6 +191,46 @@ function App() {
               title="Ask EcoGuard AI"
             >◉</button>
             <button className="user-menu" type="button" onClick={() => setActiveNav('Profile')}><span className="avatar">A</span><span className="user-copy"><strong>Ajay Kumar</strong><small>Eco Protector</small></span><span className="chevron">⌄</span></button>
+          </div>
+          <div className="city-data-picker">
+            <label>
+              <span>Search cities</span>
+              <input
+                type="search"
+                aria-label="Search available cities"
+                placeholder="Type a city..."
+                list="available-city-options"
+                value={citySearch}
+                onChange={(event) => {
+                  const value = event.target.value
+                  const match = cityOptions.find(({ city }) => normalizeCityName(city) === normalizeCityName(value))
+                  setCitySearch(value)
+                  setSelectedCity(match?.city ?? '')
+                }}
+              />
+              <datalist id="available-city-options">
+                {filteredCityOptions.map(({ city, state }) => (
+                  <option key={`${normalizeCityName(city)}-${state}`} value={city} label={state} />
+                ))}
+              </datalist>
+            </label>
+            <label>
+              <span>Water &amp; waste city</span>
+              <select
+                aria-label="Choose city for water and waste data"
+                value={selectedCity}
+                onChange={(event) => {
+                  const city = event.target.value
+                  setSelectedCity(city)
+                  setCitySearch(city)
+                }}
+              >
+                <option value="">Select a city</option>
+                {cityOptions.map(({ city, state }) => (
+                  <option key={`${normalizeCityName(city)}-${state}`} value={city}>{city}, {state}</option>
+                ))}
+              </select>
+            </label>
           </div>
         </header>
 
@@ -167,8 +252,8 @@ function App() {
               <div className="metric-grid">
                 <EnvironmentCard type="air" icon="≋" title="AIR" source={environmentData?.air} loading={environmentLoading} />
                 <EnvironmentCard type="heat" icon="☼" title="HEAT" source={environmentData?.heat} loading={environmentLoading} />
-                <EnvironmentCard type="water" icon="♆" title="WATER" source={environmentData?.water} loading={environmentLoading} />
-                <EnvironmentCard type="waste" icon="♻" title="WASTE" source={environmentData?.waste} loading={environmentLoading} />
+                <EnvironmentCard type="water" icon="♆" title="WATER" source={waterSource} />
+                <EnvironmentCard type="waste" icon="♻" title="WASTE" source={wasteSource} />
               </div>
 
               <section className={`risk-alert air-quality-summary ${riskClass}`} aria-label="Air quality summary">

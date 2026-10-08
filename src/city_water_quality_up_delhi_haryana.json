@@ -1,0 +1,1013 @@
+{
+  "dataset_name": "Indicative City-wise Surface Water pH - UP Delhi Haryana",
+  "version": "prototype-2026-10",
+  "scope": [
+    "Uttar Pradesh",
+    "Delhi",
+    "Haryana"
+  ],
+  "parameter": "pH",
+  "important_warning": "pH alone cannot determine overall water quality or drinking-water safety. These city-level values are suitable for prototype visualization only unless backed by a specific monitoring station and sampling date.",
+  "reference": {
+    "nwdp": "National Water Data Portal / NWIC",
+    "cpcb": "Central Pollution Control Board",
+    "hspcb": "Haryana State Pollution Control Board",
+    "up_jjm": "Uttar Pradesh Jal Jeevan Mission / Namami Gange"
+  },
+  "pH_reference": {
+    "cpcb_bathing_criterion": "6.5-8.5",
+    "interpretation": "Values inside this range should not automatically be labeled bad; BOD, DO, fecal coliform, TDS, heavy metals and other parameters can determine overall condition."
+  },
+  "cities": [
+    {
+      "city": "Agra",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.55-7.85",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Aligarh",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.35-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Ambedkar Nagar",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Amethi",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.65",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Amroha",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Auraiya",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Ayodhya",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Azamgarh",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Baghpat",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.80",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Bahraich",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Ballia",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Balrampur",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.65",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Banda",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Barabanki",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Bareilly",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Basti",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Bhadohi",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Bijnor",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Budaun",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Bulandshahr",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.80",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Chandauli",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Chitrakoot",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.15-7.65",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Deoria",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Etah",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Etawah",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Farrukhabad",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Fatehpur",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Firozabad",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.80",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Gautam Buddha Nagar",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Ghaziabad",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.80",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Ghazipur",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Gonda",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Gorakhpur",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Hamirpur",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Hapur",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.80",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Hardoi",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Hathras",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.80",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Jalaun",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Jaunpur",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Jhansi",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.80",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Kannauj",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Kanpur Dehat",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Kanpur Nagar",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.85",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Kasganj",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Kaushambi",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Kushinagar",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Lakhimpur Kheri",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Lalitpur",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Lucknow",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Maharajganj",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.65",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Mahoba",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Mainpuri",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Mathura",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.85",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Mau",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Meerut",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.44-7.76",
+      "indicative_status": "moderate",
+      "data_type": "observed_reference",
+      "is_official_city_measurement": true,
+      "note": "Meerut range is based on 2026 UP Jal Jeevan Mission STP measurements; other values are indicative estimates, not city-wide measurements."
+    },
+    {
+      "city": "Mirzapur",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Moradabad",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.80",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Muzaffarnagar",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.80",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Pilibhit",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Pratapgarh",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Prayagraj",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.80",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Raebareli",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Rampur",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Saharanpur",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.80",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Sambhal",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Sant Kabir Nagar",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.65",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Shahjahanpur",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Shamli",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.80",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Shravasti",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.15-7.60",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Siddharthnagar",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.15-7.65",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Sitapur",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Sonbhadra",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.15-7.70",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Sultanpur",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.70",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Unnao",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.80",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Varanasi",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.80",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Kanshiram Nagar",
+      "state": "Uttar Pradesh",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against the NWDP/CPCB station before presenting as live data."
+    },
+    {
+      "city": "Ambala",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.75",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Bhiwani",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.35-8.00",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Charkhi Dadri",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.35-8.00",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Faridabad",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.85",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Fatehabad",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.90",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Gurugram",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.90",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Hisar",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.35-8.00",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Jhajjar",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.95",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Jind",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.95",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Kaithal",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.90",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Karnal",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.85",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Kurukshetra",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.80",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Mahendragarh",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.35-8.05",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Nuh",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.95",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Palwal",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.90",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Panchkula",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.15-7.70",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Panipat",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.90",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Rewari",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-8.00",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Rohtak",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-7.95",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Sirsa",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.30-8.00",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Sonipat",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.25-7.90",
+      "indicative_status": "monitor",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Yamunanagar",
+      "state": "Haryana",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.20-7.80",
+      "indicative_status": "moderate",
+      "data_type": "approximate_city_estimate",
+      "is_official_city_measurement": false,
+      "note": "Approximate surface-water pH range for prototype/UI use; verify against HSPCB/CPCB monitoring-station data before presenting as live data."
+    },
+    {
+      "city": "Delhi",
+      "state": "Delhi",
+      "water_quality_parameter": "pH",
+      "ph_range": "7.11-7.90",
+      "indicative_status": "monitor",
+      "data_type": "government_reference_range",
+      "is_official_city_measurement": false,
+      "note": "Based on CPCB/PIB Yamuna monitoring locations in Delhi; this is not a Delhi-wide drinking-water value."
+    }
+  ]
+}

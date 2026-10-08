@@ -1,0 +1,982 @@
+{
+  "dataset_name": "EcoGuard City-wise Waste Management",
+  "version": "2026-10 prototype",
+  "coverage": {
+    "Uttar Pradesh": 73,
+    "Haryana": 22,
+    "Delhi": 1
+  },
+  "fields": {
+    "good_management": "Estimated share of municipal solid waste scientifically processed/managed.",
+    "bad_management": "Estimated share not scientifically processed or requiring disposal/management improvement.",
+    "un_published": "Estimated share for which city-level public reporting/accounting is incomplete; NOT an official SBM-U metric."
+  },
+  "official_basis": {
+    "primary": "Swachh Bharat Mission-Urban (SBM-U) city-wise report of Municipal Solid Waste Management",
+    "primary_metric": "Waste Generation (MT/D), Waste Processed (MT/D), Waste Processing %",
+    "national_context": "MoHUA reported 81% waste processing nationally in 2026.",
+    "important": "Do not present these city bands as live government measurements. For production, replace each estimate with ULB/MIS values and sampling/reporting date."
+  },
+  "cities": [
+    {
+      "city": "Agra",
+      "state": "Uttar Pradesh",
+      "good_management": "~72% to 88%",
+      "bad_management": "~2% to 23%",
+      "un_published": "~5% to 10%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Aligarh",
+      "state": "Uttar Pradesh",
+      "good_management": "~60% to 78%",
+      "bad_management": "~7% to 32%",
+      "un_published": "~8% to 15%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Ambedkar Nagar",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Amethi",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Amroha",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Auraiya",
+      "state": "Uttar Pradesh",
+      "good_management": "~35% to 58%",
+      "bad_management": "~22% to 53%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Ayodhya",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Azamgarh",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Baghpat",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Bahraich",
+      "state": "Uttar Pradesh",
+      "good_management": "~35% to 58%",
+      "bad_management": "~22% to 53%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Ballia",
+      "state": "Uttar Pradesh",
+      "good_management": "~35% to 58%",
+      "bad_management": "~22% to 53%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Balrampur",
+      "state": "Uttar Pradesh",
+      "good_management": "~35% to 58%",
+      "bad_management": "~22% to 53%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Banda",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Barabanki",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Bareilly",
+      "state": "Uttar Pradesh",
+      "good_management": "~60% to 78%",
+      "bad_management": "~7% to 32%",
+      "un_published": "~8% to 15%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Basti",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Bhadohi",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Bijnor",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Budaun",
+      "state": "Uttar Pradesh",
+      "good_management": "~35% to 58%",
+      "bad_management": "~22% to 53%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Bulandshahr",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Chandauli",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Chitrakoot",
+      "state": "Uttar Pradesh",
+      "good_management": "~35% to 58%",
+      "bad_management": "~22% to 53%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Deoria",
+      "state": "Uttar Pradesh",
+      "good_management": "~35% to 58%",
+      "bad_management": "~22% to 53%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Etah",
+      "state": "Uttar Pradesh",
+      "good_management": "~35% to 58%",
+      "bad_management": "~22% to 53%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Etawah",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Farrukhabad",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Fatehpur",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Firozabad",
+      "state": "Uttar Pradesh",
+      "good_management": "~60% to 78%",
+      "bad_management": "~7% to 32%",
+      "un_published": "~8% to 15%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Ghaziabad",
+      "state": "Uttar Pradesh",
+      "good_management": "~60% to 78%",
+      "bad_management": "~12% to 35%",
+      "un_published": "~5% to 10%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Ghazipur",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Gonda",
+      "state": "Uttar Pradesh",
+      "good_management": "~35% to 58%",
+      "bad_management": "~22% to 53%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Gorakhpur",
+      "state": "Uttar Pradesh",
+      "good_management": "~72% to 88%",
+      "bad_management": "~-3% to 20%",
+      "un_published": "~8% to 15%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Hamirpur",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Hapur",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Hardoi",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Hathras",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Jalaun",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Jaunpur",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Jhansi",
+      "state": "Uttar Pradesh",
+      "good_management": "~72% to 88%",
+      "bad_management": "~-3% to 20%",
+      "un_published": "~8% to 15%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Kannauj",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Kanpur",
+      "state": "Uttar Pradesh",
+      "good_management": "~60% to 78%",
+      "bad_management": "~12% to 35%",
+      "un_published": "~5% to 10%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Kasganj",
+      "state": "Uttar Pradesh",
+      "good_management": "~35% to 58%",
+      "bad_management": "~22% to 53%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Kaushambi",
+      "state": "Uttar Pradesh",
+      "good_management": "~35% to 58%",
+      "bad_management": "~22% to 53%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Kushinagar",
+      "state": "Uttar Pradesh",
+      "good_management": "~35% to 58%",
+      "bad_management": "~22% to 53%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Lakhimpur Kheri",
+      "state": "Uttar Pradesh",
+      "good_management": "~35% to 58%",
+      "bad_management": "~22% to 53%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Lalitpur",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Lucknow",
+      "state": "Uttar Pradesh",
+      "good_management": "~72% to 88%",
+      "bad_management": "~2% to 23%",
+      "un_published": "~5% to 10%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Maharajganj",
+      "state": "Uttar Pradesh",
+      "good_management": "~35% to 58%",
+      "bad_management": "~22% to 53%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Mahoba",
+      "state": "Uttar Pradesh",
+      "good_management": "~35% to 58%",
+      "bad_management": "~22% to 53%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Mainpuri",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Mathura",
+      "state": "Uttar Pradesh",
+      "good_management": "~72% to 88%",
+      "bad_management": "~-3% to 20%",
+      "un_published": "~8% to 15%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Mau",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Meerut",
+      "state": "Uttar Pradesh",
+      "good_management": "~72% to 88%",
+      "bad_management": "~2% to 23%",
+      "un_published": "~5% to 10%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Mirzapur",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Moradabad",
+      "state": "Uttar Pradesh",
+      "good_management": "~60% to 78%",
+      "bad_management": "~7% to 32%",
+      "un_published": "~8% to 15%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Muzaffarnagar",
+      "state": "Uttar Pradesh",
+      "good_management": "~60% to 78%",
+      "bad_management": "~7% to 32%",
+      "un_published": "~8% to 15%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Pilibhit",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Pratapgarh",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Prayagraj",
+      "state": "Uttar Pradesh",
+      "good_management": "~60% to 78%",
+      "bad_management": "~7% to 32%",
+      "un_published": "~8% to 15%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Raebareli",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Rampur",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Saharanpur",
+      "state": "Uttar Pradesh",
+      "good_management": "~60% to 78%",
+      "bad_management": "~7% to 32%",
+      "un_published": "~8% to 15%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Sambhal",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Sant Kabir Nagar",
+      "state": "Uttar Pradesh",
+      "good_management": "~35% to 58%",
+      "bad_management": "~22% to 53%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Shahjahanpur",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Shamli",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Shravasti",
+      "state": "Uttar Pradesh",
+      "good_management": "~35% to 58%",
+      "bad_management": "~22% to 53%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Siddharthnagar",
+      "state": "Uttar Pradesh",
+      "good_management": "~35% to 58%",
+      "bad_management": "~22% to 53%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Sitapur",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Sonbhadra",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Sultanpur",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Unnao",
+      "state": "Uttar Pradesh",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Varanasi",
+      "state": "Uttar Pradesh",
+      "good_management": "~72% to 88%",
+      "bad_management": "~2% to 23%",
+      "un_published": "~5% to 10%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Ambala",
+      "state": "Haryana",
+      "good_management": "~60% to 78%",
+      "bad_management": "~7% to 32%",
+      "un_published": "~8% to 15%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Bhiwani",
+      "state": "Haryana",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Charkhi Dadri",
+      "state": "Haryana",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Faridabad",
+      "state": "Haryana",
+      "good_management": "~72% to 88%",
+      "bad_management": "~2% to 23%",
+      "un_published": "~5% to 10%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Fatehabad",
+      "state": "Haryana",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Gurugram",
+      "state": "Haryana",
+      "good_management": "~72% to 88%",
+      "bad_management": "~2% to 23%",
+      "un_published": "~5% to 10%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Hisar",
+      "state": "Haryana",
+      "good_management": "~60% to 78%",
+      "bad_management": "~7% to 32%",
+      "un_published": "~8% to 15%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Jhajjar",
+      "state": "Haryana",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Jind",
+      "state": "Haryana",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Kaithal",
+      "state": "Haryana",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Karnal",
+      "state": "Haryana",
+      "good_management": "~72% to 88%",
+      "bad_management": "~-3% to 20%",
+      "un_published": "~8% to 15%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Kurukshetra",
+      "state": "Haryana",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Mahendragarh",
+      "state": "Haryana",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Nuh",
+      "state": "Haryana",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Palwal",
+      "state": "Haryana",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Panchkula",
+      "state": "Haryana",
+      "good_management": "~72% to 88%",
+      "bad_management": "~-3% to 20%",
+      "un_published": "~8% to 15%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Panipat",
+      "state": "Haryana",
+      "good_management": "~60% to 78%",
+      "bad_management": "~7% to 32%",
+      "un_published": "~8% to 15%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Rewari",
+      "state": "Haryana",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Rohtak",
+      "state": "Haryana",
+      "good_management": "~60% to 78%",
+      "bad_management": "~7% to 32%",
+      "un_published": "~8% to 15%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Sirsa",
+      "state": "Haryana",
+      "good_management": "~48% to 70%",
+      "bad_management": "~10% to 40%",
+      "un_published": "~12% to 20%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "low",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Sonipat",
+      "state": "Haryana",
+      "good_management": "~60% to 78%",
+      "bad_management": "~7% to 32%",
+      "un_published": "~8% to 15%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Yamunanagar",
+      "state": "Haryana",
+      "good_management": "~60% to 78%",
+      "bad_management": "~7% to 32%",
+      "un_published": "~8% to 15%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    },
+    {
+      "city": "Delhi",
+      "state": "Delhi",
+      "good_management": "~72% to 88%",
+      "bad_management": "~2% to 23%",
+      "un_published": "~5% to 10%",
+      "data_basis": "SBM-U city-wise MSW processing data + Swachh Survekshan/ULB context",
+      "confidence": "medium",
+      "note": "Prototype estimate. 'good_management' is intended to approximate scientifically processed MSW; 'un_published' is an EcoGuard/UI estimate, not an official SBM-U field."
+    }
+  ]
+}

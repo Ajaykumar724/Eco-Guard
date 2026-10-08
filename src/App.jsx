@@ -10,26 +10,34 @@ import './App.css'
 
 const navigation = [
   ['⌂', 'Dashboard'],
-  ['✳', 'Eco Challenge'],
-  ['⌖', 'Live Map'],
-  ['▥', 'City Progress'],
-  ['♜', 'Government Action'],
   ['◉', 'AI Eco Coach'],
-  ['♧', 'Community'],
-  ['♙', 'Profile'],
 ]
 
 function Icon({ children, className = '' }) {
   return <span className={`icon ${className}`} aria-hidden="true">{children}</span>
 }
 
-function PanelTitle({ icon, children, action }) {
+function PanelTitle({ icon, children, action, onAction, expanded }) {
   return (
     <div className="panel-title">
       <span className="panel-title-label"><Icon>{icon}</Icon>{children}</span>
-      {action && <button className="text-action" type="button">{action} <span>→</span></button>}
+      {action && (
+        <button className="text-action" type="button" onClick={onAction} aria-expanded={expanded}>
+          {action} <span>→</span>
+        </button>
+      )}
     </div>
   )
+}
+
+function getRecommendationParts(text) {
+  const separatorIndex = text.indexOf(':')
+  if (separatorIndex <= 0) return { title: text, description: '' }
+
+  return {
+    title: text.slice(0, separatorIndex).trim(),
+    description: text.slice(separatorIndex + 1).trim(),
+  }
 }
 
 function formatLocation(location) {
@@ -58,8 +66,6 @@ function App() {
     : { selectedAnswer: '', completed: false, feedback: '' }
   const air = environmentData?.air
   const heat = environmentData?.heat
-  const water = environmentData?.water
-  const waste = environmentData?.waste
   const elevatedConditions = (air?.available && air.value > 100) || (heat?.available && heat.value > 30)
   const riskClass = environmentLoading || (!air?.available && !heat?.available)
     ? 'risk-neutral'
@@ -91,7 +97,10 @@ function App() {
               className={`nav-link ${activeNav === label ? 'is-active' : ''}`}
               key={label}
               aria-label={label}
-              onClick={() => setActiveNav(label)}
+              onClick={() => {
+                setActiveNav(label)
+                if (label === 'AI Eco Coach') setAssistantOpen(true)
+              }}
               type="button"
             >
               <Icon>{icon}</Icon><span>{label}</span>
@@ -99,11 +108,10 @@ function App() {
           ))}
         </nav>
         <div className="sidebar-note">
-          <span className="leaf-sprig">♣</span>
+          <span className="leaf-sprig">🌱</span>
           <p>Small actions.<br /><strong>Big change.</strong></p>
-          <div className="side-skyline" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
+          <div className="sidebar-progress" aria-hidden="true"><i /></div>
         </div>
-          <div className="sidebar-foot"><span className="online-dot" /> Environmental data updates automatically</div>
       </aside>
 
       <div className="main-area" id="dashboard">
@@ -111,23 +119,9 @@ function App() {
           <a className="brand top-brand" href="#" aria-label="EcoGuard home">
             <img className="brand-mark" src={logo} alt="" />
             <span>
-              <strong style={{display:'block', fontSize:'22px', fontWeight:'bold'}}>
-                ECOGUARD
-                </strong>
-                <small style={{
-              fontSize:'11px',
-              fontWeight:'400',
-              letterSpacing:'0.1px',
-              color:'#15803d',
-              texttransform:'uppercase',
-              marginTop:'2px',
-              fontStyle:'italic',
-              display:'block',
-                                  
-            }}>
-              Cleaner Air | Safer Water | Resilient Cities
-              </small>
-              </span>
+              <strong>ECOGUARD</strong>
+              <small>Cleaner Air | Safer Water | Resilient Cities</small>
+            </span>
           </a>
           <label className="search-box">
             <span aria-hidden="true">⌕</span>
@@ -163,7 +157,7 @@ function App() {
 
         <main className="dashboard-content">
           <section className="welcome-strip">
-            <div className="welcome-place"><span className="place-icon">⌖</span><div><h1>{currentLocation ? formatLocation(currentLocation) : 'Selected location'}</h1><p>Live environmental data</p></div></div>
+            <div className="welcome-place"><span className="place-icon">🌱</span><div><h1>Good evening, Ajay!</h1><p>Let’s make our cities cleaner, safer and more resilient.</p></div></div>
             <div className="welcome-date"><span>▦</span><div><strong>{environmentData ? `Updated ${new Date(environmentData.updatedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` : 'Live data'}</strong><small>{environmentLoading ? 'Loading' : 'Current conditions'}</small></div></div>
             <div className="landscape" aria-hidden="true"><div className="sun-disc" /><div className="city-shapes"><i /><i /><i /><i /><i /><i /><i /></div><div className="hill hill-back" /><div className="hill hill-front" /></div>
           </section>
@@ -177,23 +171,53 @@ function App() {
                 <EnvironmentCard type="waste" icon="♻" title="WASTE" source={environmentData?.waste} loading={environmentLoading} />
               </div>
 
-              <div className={`risk-alert ${riskClass}`}><span className="risk-icon">!</span><div><strong>{environmentLoading ? 'ENVIRONMENTAL DATA: LOADING' : air?.available ? `AIR QUALITY: ${air.status.toUpperCase()}` : heat?.available ? `HEAT STATUS: ${heat.status.toUpperCase()}` : 'ENVIRONMENTAL DATA UNAVAILABLE'}</strong><p>{air?.available ? `AQI ${Math.round(air.value)} (${air.status}).` : 'Air-quality readings are unavailable.'} {heat?.available ? `Temperature ${heat.value.toFixed(1)}°C (${heat.status}).` : 'Temperature readings are unavailable.'}</p></div></div>
+              <section className={`risk-alert air-quality-summary ${riskClass}`} aria-label="Air quality summary">
+                <span className="risk-icon" aria-hidden="true">≋</span>
+                <div className="air-quality-copy">
+                  <strong>{environmentLoading ? 'AIR QUALITY · UPDATING' : air?.available ? `AIR QUALITY · ${air.status.toUpperCase()}` : 'AIR QUALITY · DATA UNAVAILABLE'}</strong>
+                  <p>{air?.available
+                    ? `${Math.round(air.value)} AQI. ${air.status === 'Good' || air.status === 'Normal' ? 'Conditions are suitable for outdoor activity.' : 'Reduce prolonged outdoor activity and protect sensitive groups.'}`
+                    : 'Current air quality readings are not available.'}</p>
+                  <div className="air-quality-meter" role="meter" aria-label="Air quality index" aria-valuemin="0" aria-valuemax="300" aria-valuenow={air?.available && Number.isFinite(air.value) ? Math.min(300, Math.max(0, Math.round(air.value))) : undefined} aria-valuetext={air?.available ? `${Math.round(air.value)} AQI, ${air.status}` : 'Unavailable'}>
+                    <span style={{ width: `${air?.available && Number.isFinite(air.value) ? Math.min(100, Math.max(0, air.value / 3)) : 0}%` }} />
+                  </div>
+                </div>
+                <div className="air-quality-readings">
+                  <span><small>AQI</small><strong>{air?.available && Number.isFinite(air.value) ? Math.round(air.value) : '—'}</strong></span>
+                  <span><small>PM2.5</small><strong>{air?.available && Number.isFinite(air.pm25) ? `${air.pm25} µg/m³` : '—'}</strong></span>
+                  <span><small>PM10</small><strong>{air?.available && Number.isFinite(air.pm10) ? `${air.pm10} µg/m³` : '—'}</strong></span>
+                </div>
+              </section>
 
               <section className="panel recommendation-panel">
-                <PanelTitle icon="▤">Today’s Recommendations</PanelTitle>
+                <PanelTitle
+                  icon="♧"
+                >
+                  Today’s Recommendations
+                </PanelTitle>
+                <p className="recommendation-intro">Simple actions for a cleaner, healthier tomorrow.</p>
                 {!environmentData
                   ? <p className="recommendation-status" role={environmentLoading ? 'status' : 'alert'}>{environmentLoading ? 'Waiting for live environmental data…' : 'Environmental data is unavailable.'}</p>
                   : recommendationState.context !== environmentData
                     ? <p className="recommendation-status" role="status">Generating recommendations from current conditions…</p>
                     : recommendationState.error
                       ? <p className="recommendation-status recommendation-error" role="alert">{recommendationState.error}</p>
-                    : <ul className="recommendation-list">
-                      {recommendationState.items.map((text, index) => (
-                        <li key={`${index}-${text}`}>
-                          <span className={`recommendation-icon ${['coral', 'blue', 'sky', 'green'][index]}`}>{['×', '◉', '▤', '♻'][index]}</span>
-                          <span>{text}</span>
-                        </li>
-                      ))}
+                    : <ul className="recommendation-list" id="recommendation-items">
+                      {recommendationState.items.slice(0, 4).map((text, index) => {
+                          const { title, description } = getRecommendationParts(text)
+                          return (
+                            <li key={`${index}-${text}`}>
+                              <span className={`recommendation-icon ${['coral', 'green', 'blue', 'lime'][index]}`} aria-hidden="true">
+                                {['!', '♣', '♆', '♻'][index]}
+                              </span>
+                              <span className="recommendation-copy">
+                                <strong>{title}</strong>
+                                {description && <small>{description}</small>}
+                              </span>
+                              <span className="recommendation-chevron" aria-hidden="true">›</span>
+                            </li>
+                          )
+                        })}
                     </ul>}
               </section>
 
@@ -272,8 +296,11 @@ function App() {
                 ) : (
                   <p className="challenge-feedback" role="status">No Eco Challenge is scheduled for today. Check back tomorrow!</p>
                 )}
-                <EcoGames games={challengeData.games} />
                 <div className="streak-row"><span>♨ 7 Day Streak</span><div className="streak-dots"><i /><i /><i /><i /><i /><i /><i /></div><strong>★ 340</strong><small>Eco Points</small></div>
+              </section>
+
+              <section className="panel mini-games-panel">
+                <EcoGames games={challengeData.games} />
               </section>
 
               {/* <section className="panel impact-panel">
@@ -306,8 +333,20 @@ function App() {
               </section> */}
 
               <section className="panel insights-panel">
-                <PanelTitle icon="✦">Current Air Readings</PanelTitle>
-                <p className="insight-copy">{air?.available ? `AQI ${Math.round(air.value)} (${air.status}); PM2.5 ${Number.isFinite(air.pm25) ? `${air.pm25} µg/m³` : 'unavailable'}; PM10 ${Number.isFinite(air.pm10) ? `${air.pm10} µg/m³` : 'unavailable'}.` : 'Air-quality readings are unavailable.'}</p>
+                <PanelTitle icon="✦" action="View details">Current Air Readings</PanelTitle>
+                <div className="air-reading-grid" aria-live="polite">
+                  {[
+                    ['AQI', air?.available && Number.isFinite(air.value) ? Math.round(air.value) : '—', air?.status ?? 'Live reading', 'air'],
+                    ['PM2.5', air?.available && Number.isFinite(air.pm25) ? `${air.pm25} µg/m³` : '—', 'Fine particles', 'pm25'],
+                    ['PM10', air?.available && Number.isFinite(air.pm10) ? `${air.pm10} µg/m³` : '—', 'Coarse particles', 'pm10'],
+                    ['NO₂', air?.available && Number.isFinite(air.no2) ? `${air.no2} µg/m³` : '—', 'Nitrogen dioxide', 'no2'],
+                  ].map(([label, value, detail, type]) => (
+                    <div className={`air-reading air-reading-${type}`} key={label}>
+                      <span aria-hidden="true">{type === 'air' ? '≋' : type === 'pm25' ? '⠿' : type === 'pm10' ? '✣' : '♧'}</span>
+                      <div><small>{label}</small><strong>{value}</strong><em>{detail}</em></div>
+                    </div>
+                  ))}
+                </div>
               </section>
 
               {/* <section className="panel partnership-panel">

@@ -15,8 +15,8 @@ export async function* streamEcoAssistant(message, context, history = [], signal
 export async function getRecommendations(context) {
   const output = await requestModel({
     messages: [
-      { role: 'system', content: `You are EcoGuard's environmental health recommender. Use only the supplied dashboard context. Do not invent AQI, temperature, water, waste, or other current readings. If any data is unavailable, say so where relevant and make only safe, practical suggestions. Do not diagnose medical conditions. Return exactly four concise recommendations as a JSON array of four strings, with no other text.` },
-      { role: 'user', content: `Current dashboard context (JSON):\n${JSON.stringify(context)}\n\nReturn exactly four practical recommendations based on this context.` },
+      { role: 'system', content: `You are EcoGuard's environmental health recommender. Use only the supplied dashboard context. Do not invent AQI, temperature, water, waste, or other current readings. If any data is unavailable, say so where relevant and make only safe, practical suggestions. Do not diagnose medical conditions. Return exactly four concise recommendations as a JSON array of four strings, with no other text. Format each string as "Short title: one-sentence practical explanation".` },
+      { role: 'user', content: `Current dashboard context (JSON):\n${JSON.stringify(context)}\n\nReturn exactly four practical recommendations based on this context. Format each as "Short title: one-sentence practical explanation".` },
     ],
     maxOutputTokens: 400,
   })

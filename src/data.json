@@ -1,13 +1,45 @@
 {
-  "challenges": [
+   "challenges": [
+    {
+      "date": "2026-10-05",
+      "title": "Skip Single-Use Plastic",
+      "question": "What is the best way to avoid a single-use drink bottle?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Carry a reusable water bottle"
+        },
+        {
+          "id": "B",
+          "text": "Use a new plastic bottle each time"
+        },
+        {
+          "id": "C",
+          "text": "Recycle a disposable cup after every drink"
+        }
+      ],
+      "answer": "A",
+      "points": 20,
+      "correctFeedback": "Correct! A reusable bottle helps prevent single-use waste.",
+      "incorrectFeedback": "Not quite. Carrying a reusable water bottle avoids single-use waste."
+    },
     {
       "date": "2026-10-08",
       "title": "Beat the Heat",
       "question": "Which action saves the most energy when cooling your home?",
       "options": [
-        { "id": "A", "text": "Set the AC to 18°C" },
-        { "id": "B", "text": "Set the AC around 24–26°C" },
-        { "id": "C", "text": "Keep the windows open while the AC is running" }
+        {
+          "id": "A",
+          "text": "Set the AC to 18°C"
+        },
+        {
+          "id": "B",
+          "text": "Set the AC around 24–26°C"
+        },
+        {
+          "id": "C",
+          "text": "Keep the windows open while the AC is running"
+        }
       ],
       "answer": "B",
       "points": 20,
@@ -15,18 +47,280 @@
       "incorrectFeedback": "Not quite. Setting the AC around 24–26°C saves energy."
     },
     {
-      "date": "2026-10-05",
-      "title": "Skip Single-Use Plastic",
-      "question": "What is the best way to avoid a single-use drink bottle?",
+      "date": "2026-10-09",
+      "title": "Save Every Drop",
+      "question": "What is a simple way to reduce water waste while brushing your teeth?",
       "options": [
-        { "id": "A", "text": "Carry a reusable water bottle" },
-        { "id": "B", "text": "Use a new plastic bottle each time" },
-        { "id": "C", "text": "Recycle a disposable cup after every drink" }
+        {
+          "id": "A",
+          "text": "Leave the tap running"
+        },
+        {
+          "id": "B",
+          "text": "Use hot water the whole time"
+        },
+        {
+          "id": "C",
+          "text": "Turn off the tap while brushing"
+        }
+      ],
+      "answer": "C",
+      "points": 20,
+      "correctFeedback": "Correct! Turning off the tap saves water.",
+      "incorrectFeedback": "Not quite. Turn off the tap while brushing to avoid wasting water."
+    },
+    {
+      "date": "2026-10-10",
+      "title": "Sort Your Waste",
+      "question": "How should clean paper and cardboard usually be disposed of?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Put them with recyclable dry waste"
+        },
+        {
+          "id": "B",
+          "text": "Mix them with food scraps"
+        },
+        {
+          "id": "C",
+          "text": "Burn them outdoors"
+        }
       ],
       "answer": "A",
       "points": 20,
-      "correctFeedback": "Correct! A reusable bottle helps prevent single-use waste.",
-      "incorrectFeedback": "Not quite. Carrying a reusable water bottle avoids single-use waste."
+      "correctFeedback": "Correct! Keep clean paper and cardboard separate for recycling.",
+      "incorrectFeedback": "Not quite. Clean paper and cardboard should go with recyclable dry waste where accepted."
+    },
+    {
+      "date": "2026-10-11",
+      "title": "Travel Greener",
+      "question": "For a short trip, which option can help reduce transport emissions?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Drive alone every time"
+        },
+        {
+          "id": "B",
+          "text": "Walk or cycle when safe and practical"
+        },
+        {
+          "id": "C",
+          "text": "Keep the engine running while parked"
+        }
+      ],
+      "answer": "B",
+      "points": 20,
+      "correctFeedback": "Correct! Walking or cycling for short trips can reduce emissions.",
+      "incorrectFeedback": "Not quite. Consider walking or cycling for short trips when it is safe and practical."
+    },
+    {
+      "date": "2026-10-12",
+      "title": "Breathe Cleaner",
+      "question": "When local air pollution is high, what is a sensible precaution?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Exercise beside heavy traffic"
+        },
+        {
+          "id": "B",
+          "text": "Burn leaves to clear the garden"
+        },
+        {
+          "id": "C",
+          "text": "Reduce strenuous outdoor activity"
+        }
+      ],
+      "answer": "C",
+      "points": 20,
+      "correctFeedback": "Correct! Reducing strenuous outdoor activity can lower pollution exposure.",
+      "incorrectFeedback": "Not quite. When pollution is high, reduce strenuous outdoor activity and follow local health guidance."
+    },
+    {
+      "date": "2026-10-13",
+      "title": "Choose Reusables",
+      "question": "Which habit helps reduce disposable packaging?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Carry a reusable shopping bag"
+        },
+        {
+          "id": "B",
+          "text": "Take a new bag for every item"
+        },
+        {
+          "id": "C",
+          "text": "Choose extra packaging when possible"
+        }
+      ],
+      "answer": "A",
+      "points": 20,
+      "correctFeedback": "Correct! Reusable bags can reduce the need for single-use bags.",
+      "incorrectFeedback": "Not quite. Carry a reusable shopping bag to help reduce disposable packaging."
+    },
+    {
+      "date": "2026-10-14",
+      "title": "Switch Off",
+      "question": "What should you do with lights in an empty room?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Leave them on all day"
+        },
+        {
+          "id": "B",
+          "text": "Switch them off when not needed"
+        },
+        {
+          "id": "C",
+          "text": "Turn on every light in the house"
+        }
+      ],
+      "answer": "B",
+      "points": 20,
+      "correctFeedback": "Correct! Switching off unused lights saves electricity.",
+      "incorrectFeedback": "Not quite. Switch off lights when they are not needed."
+    },
+    {
+      "date": "2026-10-15",
+      "title": "Compost Food Scraps",
+      "question": "Which item is commonly suitable for a home compost bin?",
+      "options": [
+        {
+          "id": "A",
+          "text": "A plastic wrapper"
+        },
+        {
+          "id": "B",
+          "text": "A battery"
+        },
+        {
+          "id": "C",
+          "text": "Fruit and vegetable scraps"
+        }
+      ],
+      "answer": "C",
+      "points": 20,
+      "correctFeedback": "Correct! Many fruit and vegetable scraps can be composted.",
+      "incorrectFeedback": "Not quite. Fruit and vegetable scraps are commonly compostable; keep plastics and batteries out."
+    },
+    {
+      "date": "2026-10-16",
+      "title": "Use Water Wisely",
+      "question": "What is a good first step if you notice a leaking tap?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Report or repair the leak promptly"
+        },
+        {
+          "id": "B",
+          "text": "Ignore it for a month"
+        },
+        {
+          "id": "C",
+          "text": "Open it further"
+        }
+      ],
+      "answer": "A",
+      "points": 20,
+      "correctFeedback": "Correct! Fixing leaks promptly helps prevent water loss.",
+      "incorrectFeedback": "Not quite. Report or repair leaking taps promptly to reduce water waste."
+    },
+    {
+      "date": "2026-10-17",
+      "title": "Protect Green Spaces",
+      "question": "What is a responsible way to enjoy a park?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Leave litter under a tree"
+        },
+        {
+          "id": "B",
+          "text": "Take your rubbish to the proper bin"
+        },
+        {
+          "id": "C",
+          "text": "Damage plants to make a path"
+        }
+      ],
+      "answer": "B",
+      "points": 20,
+      "correctFeedback": "Correct! Dispose of rubbish properly and help keep parks clean.",
+      "incorrectFeedback": "Not quite. Put rubbish in the proper bin and avoid damaging plants."
+    },
+    {
+      "date": "2026-10-18",
+      "title": "Recycle E-Waste Safely",
+      "question": "What should you do with an old battery or electronic device?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Throw it into any street bin"
+        },
+        {
+          "id": "B",
+          "text": "Burn it with household waste"
+        },
+        {
+          "id": "C",
+          "text": "Use an authorised e-waste collection point"
+        }
+      ],
+      "answer": "C",
+      "points": 20,
+      "correctFeedback": "Correct! Authorised collection helps e-waste get handled safely.",
+      "incorrectFeedback": "Not quite. Take batteries and electronics to an appropriate authorised collection point."
+    },
+    {
+      "date": "2026-10-19",
+      "title": "Keep Indoor Air Cleaner",
+      "question": "Which action can help reduce indoor air pollution?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Avoid burning waste indoors and ensure suitable ventilation"
+        },
+        {
+          "id": "B",
+          "text": "Burn plastic to remove clutter"
+        },
+        {
+          "id": "C",
+          "text": "Use smoky fuels indoors without ventilation"
+        }
+      ],
+      "answer": "A",
+      "points": 20,
+      "correctFeedback": "Correct! Avoid burning waste and maintain suitable ventilation.",
+      "incorrectFeedback": "Not quite. Never burn plastic indoors; avoid smoky fuels and ensure suitable ventilation."
+    },
+    {
+      "date": "2026-10-20",
+      "title": "Make Every Trip Count",
+      "question": "If several errands are nearby, what can help lower your travel impact?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Make a separate car trip for every errand"
+        },
+        {
+          "id": "B",
+          "text": "Combine errands into one trip"
+        },
+        {
+          "id": "C",
+          "text": "Let the vehicle idle between errands"
+        }
+      ],
+      "answer": "B",
+      "points": 20,
+      "correctFeedback": "Correct! Combining errands can reduce unnecessary travel.",
+      "incorrectFeedback": "Not quite. Combining nearby errands can reduce unnecessary trips and emissions."
     }
   ],
   "games": [

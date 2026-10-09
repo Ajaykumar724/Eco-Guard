@@ -127,7 +127,7 @@
 
 .sidebar-note {
   position: relative;
-  display: flex;
+  /* display: flex; */
   min-height: 180px;
   flex: 1;
   flex-direction: column;
@@ -318,24 +318,27 @@
 
 .city-data-picker {
   display: flex;
-  gap: 6px;
-  color: #71847b;
-  font-size: 8px;
+  min-width: 0;
+  flex: 0 1 auto;
+  color: #FFFFFF;
+  font-size: 10px;
   white-space: nowrap;
 }
 
 .city-data-picker label {
-  display: grid;
+  display: flex;
   min-width: 0;
-  gap: 3px;
+  align-items: center;
+  margin: 0;
 }
 
 .city-data-picker input,
 .city-data-picker select {
   box-sizing: border-box;
-  width: 130px;
+  width: clamp(112px, 15vw, 170px);
   min-width: 0;
-  padding: 4px 22px 4px 7px;
+  height: 34px;
+  padding: 4px 22px 4px 8px;
   border: 1px solid #dce7e3;
   border-radius: 6px;
   color: #29433a;
@@ -344,15 +347,21 @@
   font-size: 9px;
 }
 
+.city-data-picker label > span { display: none; }
+
 .weather > span { font-size: 23px; }
 .weather strong,
 .city-chip strong,
 .user-menu strong { display: block; color: #29433a; font-size: 10px; }
 .weather small,
 .city-chip small,
-.user-menu small { display: block; margin-top: 2px; color: #71847b; font-size: 8px; }
+.user-menu small { display: block; margin-top: 2px; color: #ffffff; font-size: 10px; }
 .city-chip { padding-left: 15px; border-left: 1px solid #e2ebe6; }
 .pin { color: #13835d; font-size: 12px; }
+
+/* .weather small {
+  color: #ffffff !important;
+} */
 
 .icon-button {
   position: relative;
@@ -431,8 +440,8 @@
 
 .welcome-place { min-width: 185px; border-right: 1px solid #e6eee9; }
 .place-icon { color: #13815a; font-size: 23px; }
-.welcome-place h1 { margin: 0; color: #1d3029; font-family: var(--display); font-size: 15px; font-weight: 800; line-height: 1.25; }
-.welcome-place p { color: #71847a; font-size: 9px; }
+.welcome-place h1 { margin: 0; color: #ffffff; font-family: var(--display); font-size: 15px; font-weight: 800; line-height: 1.25; }
+.welcome-place p { color: #ffffff; font-size: 9px; }
 .welcome-date { min-width: 190px; }
 .welcome-date > span { color: #17805c; font-size: 17px; }
 .welcome-date strong { display: block; color: #4a6257; font-size: 9px; }
@@ -479,11 +488,11 @@
 .metric-icon { position: absolute; top: 12px; left: 10px; display: grid; width: 30px; height: 30px; place-items: center; border-radius: 50%; color: var(--metric-color); background: color-mix(in srgb, var(--metric-color) 13%, white); font-size: 22px; }
 .metric-label { display: flex; align-items: center; justify-content: space-between; color: #456052; font-size: 8px; font-weight: 800; }
 .metric-label span { color: #4c6d5e; font-size: 17px; line-height: 10px; }
-.metric-value { margin-top: 1px; color: var(--metric-color); font-family: var(--display); font-size: 19px; font-weight: 800; line-height: 1.05; }
+.metric-value { max-width: 100%; margin-top: 1px; overflow-wrap: anywhere; color: var(--metric-color); font-family: var(--display); font-size: 19px; font-weight: 800; line-height: 1.15; }
 .metric-water .metric-value,
 .metric-waste .metric-value { font-size: 14px; }
-.metric-card > small { margin-top: 1px; color: #809187; font-size: 7px; }
-.status-pill { position: absolute; right: 8px; bottom: 7px; padding: 2px 6px; border-radius: 10px; color: #fff; font-size: 7px; font-weight: 700; }
+.metric-card > small { max-width: 100%; margin-top: 1px; color: #809187; font-size: 7px; }
+.status-pill { position: static; max-width: 100%; align-self: flex-start; flex: 0 0 auto; margin-top: 3px; padding: 2px 6px; border-radius: 10px; color: #fff; font-size: 7px; font-weight: 700; line-height: 1.2; overflow-wrap: anywhere; }
 .status-bad { background: #ec4b57; }
 .status-hot { background: #ef8b18; }
 .status-good { background: #118a5c; }
@@ -524,9 +533,9 @@
 .recommendation-panel .panel-title .icon { font-size: 21px; }
 .recommendation-list { display: grid; gap: 8px; margin: 11px 0 0; padding: 0; list-style: none; }
 .recommendation-list li { display: flex; min-height: 54px; align-items: center; gap: 11px; padding: 8px 10px; border: 1px solid #e1eee8; border-radius: 10px; color: #486155; background: #fff; font-size: 9px; }
-.recommendation-copy { display: grid; min-width: 0; flex: 1; gap: 4px; }
+.recommendation-copy { display: grid; min-width: 0; max-width: 100%; flex: 1; gap: 4px; overflow-wrap: anywhere; }
 .recommendation-copy strong { overflow-wrap: anywhere; color: #29483b; font-size: 10px; font-weight: 700; }
-.recommendation-copy small { color: #71847a; font-size: 8px; line-height: 1.4; }
+.recommendation-copy small { min-width: 0; max-width: 100%; overflow-wrap: anywhere; color: #71847a; font-size: 8px; line-height: 1.4; }
 .recommendation-chevron { flex: 0 0 auto; color: #61776c; font-size: 23px; line-height: 1; }
 .recommendation-status { margin: 11px 0 2px; color: #71847a; font-size: 9px; line-height: 1.5; }
 .recommendation-error { color: #b74448; }
@@ -1012,7 +1021,7 @@
 
   .metric-label { font-size: 9px; }
   .metric-card > small { font-size: 8px; }
-  .status-pill { right: 10px; bottom: 9px; font-size: 8px; }
+  .status-pill { font-size: 8px; }
 
   .risk-alert {
     grid-column: 1 / -1;
@@ -1083,7 +1092,7 @@
 .search-box input { font-size: 12px; }
 .topbar-tools { gap: clamp(12px, 2vw, 28px); }
 .weather strong, .city-chip strong, .user-menu strong { font-size: 11px; }
-.weather small, .city-chip small, .user-menu small { font-size: 9px; }
+.weather small, .city-chip small, .user-menu small { font-size: 10px; }
 .assistant-toggle { color: #087b58; background: #fff; }
 .assistant-toggle:hover, .assistant-toggle.is-open { color: white; background: #087b58; }
 
@@ -1115,8 +1124,8 @@
   background: transparent;
 }
 .welcome-place { min-width: 0; border: 0; padding: 0 2px; }
-.welcome-place h1 { color: #123a47; font-size: clamp(20px, 2vw, 26px); }
-.welcome-place p { margin-top: 5px; color: #244b59; font-size: 12px; }
+.welcome-place h1 { color: #ffffff; font-size: clamp(20px, 2vw, 26px); }
+.welcome-place p { margin-top: 5px; color: #ffffff; font-size: 12px; }
 .place-icon { display: none; }
 .welcome-date {
   min-width: 0;
@@ -1150,9 +1159,9 @@
 .metric-icon { top: 14px; left: 14px; width: 46px; height: 46px; font-size: 26px; }
 .metric-label { font-size: 10px; }
 .metric-value { font-size: 23px; }
-.metric-water .metric-value, .metric-waste .metric-value { font-size: 21px; }
+.metric-water .metric-value, .metric-waste .metric-value { font-size: 16px; }
 .metric-card > small { font-size: 9px; }
-.status-pill { right: 12px; bottom: 10px; padding: 3px 10px; font-size: 9px; }
+.status-pill { padding: 3px 10px; font-size: 9px; }
 .risk-alert {
   grid-column: 1 / -1;
   min-height: 46px;
@@ -1164,44 +1173,57 @@
 .recommendation-panel {
   grid-column: 1 / span 7;
   min-height: 310px;
-  padding: 18px;
-  border-color: rgba(37, 179, 123, .35);
-  border-radius: 16px;
+  padding: 22px;
+  border-color: rgba(37, 205, 150, .48);
+  border-radius: 24px;
   color: #f5fff9;
   background:
-    linear-gradient(105deg, rgba(0, 40, 38, .92), rgba(0, 77, 54, .83)),
-    url('./assets/sidebar.png') center 60% / cover;
-  box-shadow: 0 9px 24px rgba(0, 68, 49, .2);
+    linear-gradient(110deg, rgba(0, 38, 34, .91), rgba(0, 68, 49, .76)),
+    url('./assets/sidebar.png') center 35% / cover;
+  box-shadow: 0 12px 30px rgba(0, 68, 49, .24);
 }
 .recommendation-panel .panel-title { color: #fff; }
-.recommendation-panel .panel-title-label { font-size: 18px; }
-.recommendation-panel .panel-title .icon { color: #64edaa; font-size: 23px; }
+.recommendation-panel .panel-title-label { gap: 12px; font-size: clamp(17px, 1.5vw, 24px); }
+.recommendation-panel .panel-title .icon { color: #46f0a2; font-size: clamp(24px, 2vw, 34px); }
 .recommendation-panel .text-action { color: #8df4c4; font-size: 10px; }
-.recommendation-intro { margin: 2px 0 0 32px; color: rgba(239,255,246,.8); font-size: 12px; }
+.recommendation-intro {
+  margin: 4px 0 0 42px;
+  color: rgba(239,255,246,.88);
+  font-size: clamp(12px, 1.1vw, 17px);
+  line-height: 1.35;
+}
 .recommendation-list {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
 }
 .recommendation-list li {
-  min-height: 140px;
+  min-width: 0;
+  min-height: 0;
   align-items: flex-start;
   flex-direction: column;
-  gap: 8px;
-  padding: 12px;
-  border-color: rgba(126, 245, 190, .2);
-  border-radius: 13px;
+  gap: 10px;
+  padding: 14px;
+  border-color: rgba(97, 229, 208, .45);
+  border-radius: 20px;
   color: #effff6;
-  background: linear-gradient(145deg, rgba(0, 147, 163, .55), rgba(1, 51, 56, .75));
-  font-size: 10px;
+  background: linear-gradient(145deg, rgba(0, 139, 156, .67), rgba(0, 53, 62, .83));
+  font-size: 13px;
 }
-.recommendation-list li:nth-child(3n + 2) { background: linear-gradient(145deg, rgba(164, 108, 11, .48), rgba(33, 57, 29, .82)); }
-.recommendation-list li:nth-child(3n) { background: linear-gradient(145deg, rgba(14, 103, 180, .58), rgba(7, 48, 69, .82)); }
+.recommendation-list li:nth-child(4n + 2) {
+  border-color: rgba(235, 195, 69, .52);
+  background: linear-gradient(145deg, rgba(105, 102, 22, .72), rgba(30, 57, 28, .88));
+}
+.recommendation-list li:nth-child(4n + 3) {
+  border-color: rgba(79, 169, 229, .54);
+  background: linear-gradient(145deg, rgba(11, 105, 166, .72), rgba(5, 48, 75, .88));
+}
 .recommendation-copy { gap: 6px; }
-.recommendation-copy strong { color: #fff; font-size: 12px; }
-.recommendation-copy small { color: rgba(239,255,246,.83); font-size: 10px; }
-.recommendation-icon { width: 38px; height: 38px; background: #09a8eb !important; }
-.recommendation-icon.green { background: #f39a23 !important; }
+.recommendation-copy strong { color: #fff; font-size: clamp(13px, 1.15vw, 18px); }
+.recommendation-copy small { color: rgba(239,255,246,.9); font-size: clamp(11px, .95vw, 15px); line-height: 1.4; }
+.recommendation-icon { width: clamp(42px, 4vw, 64px); height: clamp(42px, 4vw, 64px); background: #09a8eb !important; font-size: 30px; }
+.recommendation-icon.green { color: #006b4f; background: #f39a23 !important; }
+.recommendation-icon.lime { color: #3d9638; }
 .recommendation-chevron { display: none; }
 .recommendation-status { color: #e4f5eb; font-size: 11px; }
 .recommendation-error { color: #ffc2c2; }
@@ -1300,7 +1322,7 @@
   min-height: 105px;
   flex: 0 0 auto;
   justify-content: flex-end;
-  margin: 0 12px 14px;
+  margin: auto 12px 14px;
   padding: 11px 13px;
   border: 1px solid rgba(74, 236, 173, .16);
   border-radius: 14px;
@@ -1364,7 +1386,8 @@
     gap: 8px;
     margin-top: 10px;
   }
-  .recommendation-list li { min-height: 0; padding: 9px; }
+  .recommendation-list li { min-height: 0; padding: 12px; }
+  .recommendation-list li > .recommendation-copy { width: 100%; }
   .recommendation-list li:nth-child(n + 5) { display: none; }
   .challenge-panel { display: flex; flex-direction: column; padding: 13px; }
   .challenge-panel > .panel-title { flex: 0 0 auto; }
@@ -1429,14 +1452,14 @@
   .air-quality-summary .risk-icon { width: 31px; height: 31px; }
   .air-quality-readings span { min-width: 48px; padding: 3px 6px; }
   .recommendation-panel { padding: 10px; }
-  .recommendation-panel .panel-title-label { font-size: 15px; }
-  .recommendation-intro { font-size: 9px; }
-  .recommendation-list { gap: 6px; margin-top: 6px; }
-  .recommendation-list li { gap: 5px; padding: 7px; }
-  .recommendation-icon { width: 30px; height: 30px; font-size: 15px; }
+  .recommendation-panel .panel-title-label { font-size: 16px; }
+  .recommendation-intro { font-size: 10px; }
+  .recommendation-list { gap: 7px; margin-top: 7px; }
+  .recommendation-list li { gap: 6px; padding: 8px; }
+  .recommendation-icon { width: 36px; height: 36px; font-size: 22px; }
   .recommendation-copy { gap: 3px; }
-  .recommendation-copy strong { font-size: 10px; }
-  .recommendation-copy small { font-size: 8px; }
+  .recommendation-copy strong { font-size: 11px; }
+  .recommendation-copy small { font-size: 9px; }
   .challenge-panel { padding: 9px; }
   .challenge-panel .panel-title-label { font-size: 12px; }
   .challenge-heading { gap: 6px; margin: 5px 0; }
@@ -1500,22 +1523,13 @@
   .top-brand small { display: block; font-size: 7px; }
   .topbar-tools { grid-column: 2; grid-row: 1; gap: 8px; }
   .weather { display: none; }
+  .city-chip { display: none; }
   .city-data-picker {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: 100%;
-    gap: 10px;
+    flex: 0 1 auto;
+    justify-content: flex-end;
   }
-  .city-data-picker input,
-  .city-data-picker select {
-    width: 100%;
-    min-height: 34px;
-  }
-  .city-chip { padding: 0; border: 0; }
+  .city-data-picker select { width: min(170px, 42vw); }
   .city-chip small, .user-copy, .chevron { display: none; }
-  .city-chip strong { max-width: 90px; overflow: hidden; font-size: 9px; text-overflow: ellipsis; }
   .assistant-toggle { width: 32px; height: 32px; }
   .user-menu { padding-left: 8px; }
   .search-box {
@@ -1538,9 +1552,9 @@
   .metric-icon { top: 13px; left: 9px; width: 36px; height: 36px; font-size: 21px; }
   .metric-label { font-size: 9px; }
   .metric-value { font-size: 20px; }
-  .metric-water .metric-value, .metric-waste .metric-value { font-size: 17px; }
+  .metric-water .metric-value, .metric-waste .metric-value { font-size: 14px; }
   .metric-card > small { font-size: 8px; }
-  .status-pill { right: 7px; bottom: 7px; padding: 2px 7px; font-size: 8px; }
+  .status-pill { padding: 2px 7px; font-size: 8px; }
   .risk-alert { grid-column: 1; align-items: flex-start; padding: 9px; }
   .risk-alert strong { font-size: 9px; }
   .risk-alert p { font-size: 8px; }
@@ -1585,6 +1599,8 @@
 
 @media (max-width: 380px) {
   .topbar { padding-right: 10px; padding-left: 10px; }
+  .top-brand small { display: none; }
+  .city-data-picker select { width: min(150px, 42vw); }
   .dashboard-content { padding-right: 9px; padding-left: 9px; }
   .recommendation-list { grid-template-columns: minmax(0, 1fr); }
   .recommendation-list li { min-height: 95px; }

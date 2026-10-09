@@ -71,12 +71,8 @@ function App() {
   const [activeNav, setActiveNav] = useState('Dashboard')
   const [challengeProgress, setChallengeProgress] = useState({ date: '', selectedAnswer: '', completed: false, feedback: '' })
   const [selectedCity, setSelectedCity] = useState('')
-  const [citySearch, setCitySearch] = useState('')
   const [assistantOpen, setAssistantOpen] = useState(false)
   const [recommendationState, setRecommendationState] = useState({ context: null, items: [], error: '' })
-  const filteredCityOptions = cityOptions.filter(({ city, state }) => (
-    `${city} ${state}`.toLocaleLowerCase().includes(citySearch.trim().toLocaleLowerCase())
-  ))
   const dailyChallenge = challengeData.challenges.find(({ date }) => date === getLocalDateKey())
   const currentChallengeProgress = challengeProgress.date === dailyChallenge?.date
     ? challengeProgress
@@ -182,55 +178,33 @@ function App() {
           <div className="topbar-tools">
             <div className="weather"><span>🌤️</span><div><strong>{environmentLoading ? 'Loading...' : environmentData?.heat.available ? `${environmentData.heat.value.toFixed(0)}°` : 'Unavailable'}</strong><small>{environmentData?.heat.status ?? 'Current temperature'}</small></div></div>
             <div className="city-chip"><span className="pin">●</span><div><strong>{formatLocation(currentLocation)}</strong><small>{currentLocation ? 'Selected coordinates' : 'Current location'}</small></div></div>
-            <button
+            {/* <button
               className={`assistant-toggle ${assistantOpen ? 'is-open' : ''}`}
               type="button"
               aria-label={assistantOpen ? 'Close EcoGuard AI assistant' : 'Open EcoGuard AI assistant'}
               aria-expanded={assistantOpen}
               onClick={() => setAssistantOpen((open) => !open)}
               title="Ask EcoGuard AI"
-            >◉</button>
-            <button className="user-menu" type="button" onClick={() => setActiveNav('Profile')}><span className="avatar">A</span><span className="user-copy"><strong>Ajay Kumar</strong><small>Eco Protector</small></span><span className="chevron">⌄</span></button>
-          </div>
-          <div className="city-data-picker">
-            <label>
-              <span>Search cities</span>
-              <input
-                type="search"
-                aria-label="Search available cities"
-                placeholder="Type a city..."
-                list="available-city-options"
-                value={citySearch}
-                onChange={(event) => {
-                  const value = event.target.value
-                  const match = cityOptions.find(({ city }) => normalizeCityName(city) === normalizeCityName(value))
-                  setCitySearch(value)
-                  setSelectedCity(match?.city ?? '')
-                }}
-              />
-              <datalist id="available-city-options">
-                {filteredCityOptions.map(({ city, state }) => (
-                  <option key={`${normalizeCityName(city)}-${state}`} value={city} label={state} />
-                ))}
-              </datalist>
-            </label>
-            <label>
-              <span>Water &amp; waste city</span>
-              <select
-                aria-label="Choose city for water and waste data"
-                value={selectedCity}
-                onChange={(event) => {
-                  const city = event.target.value
-                  setSelectedCity(city)
-                  setCitySearch(city)
-                }}
-              >
-                <option value="">Select a city</option>
-                {cityOptions.map(({ city, state }) => (
-                  <option key={`${normalizeCityName(city)}-${state}`} value={city}>{city}, {state}</option>
-                ))}
-              </select>
-            </label>
+            >◉</button> */}
+            {/* <button className="user-menu" type="button" onClick={() => setActiveNav('Profile')}><span className="avatar">A</span><span className="user-copy"><strong>Ajay Kumar</strong><small>Eco Protector</small></span><span className="chevron">⌄</span></button> */}
+            <div className="city-data-picker">
+              <label>
+                <select
+                  aria-label="Choose city for water and waste data"
+                  value={selectedCity}
+                  onChange={(event) => {
+                    const city = event.target.value
+                    setSelectedCity(city)
+                  }}
+                >
+                  <option value="">Select a city</option>
+                  {cityOptions.map(({ city, state }) => (
+                    <option key={`${normalizeCityName(city)}-${state}`} value={city}>{city}, {state}</option>
+                  ))}
+                </select>
+                <span>Water &amp; waste city</span>
+              </label>
+            </div>
           </div>
         </header>
 
@@ -242,7 +216,7 @@ function App() {
 
         <main className="dashboard-content">
           <section className="welcome-strip">
-            <div className="welcome-place"><span className="place-icon">🌱</span><div><h1>Good evening, Ajay!</h1><p>Let’s make our cities cleaner, safer and more resilient.</p></div></div>
+            <div className="welcome-place"><span className="place-icon">🌱</span><div><h1>Good evening, Dear!</h1><p>Let’s make our cities cleaner, safer and more resilient.</p></div></div>
             <div className="welcome-date"><span>▦</span><div><strong>{environmentData ? `Updated ${new Date(environmentData.updatedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` : 'Live data'}</strong><small>{environmentLoading ? 'Loading' : 'Current conditions'}</small></div></div>
             <div className="landscape" aria-hidden="true"><div className="sun-disc" /><div className="city-shapes"><i /><i /><i /><i /><i /><i /><i /></div><div className="hill hill-back" /><div className="hill hill-front" /></div>
           </section>

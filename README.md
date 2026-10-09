@@ -38,10 +38,4 @@ Waste score is calculated only when all four metrics are present: collection eff
 - `npm run lint` checks the project.
 - `npm run build` creates the production frontend bundle.
 
-## Deploy to Netlify
-
-The included `netlify.toml` builds the frontend and routes the environment, assistant, and recommendations API paths to a Netlify Function. Connect this repository to Netlify and deploy with the configured build settings.
-
-In **Site configuration → Environment variables**, add `OPENAI_API_KEY` or `AWS_BEARER_TOKEN_BEDROCK`. Set `OPENAI_BASE_URL` and `OPENAI_MODEL` too if your provider does not use the defaults. These must be Netlify runtime variables, not `VITE_` variables; never put the API key in frontend code. After adding or changing variables, trigger a new deploy so the function picks them up.
-
-The function returns assistant responses as server-sent events, but Netlify delivers the response after the model finishes rather than incrementally streaming it. `AI_TIMEOUT_MS` controls the upstream timeout; ensure the Netlify plan's function execution limit allows enough time for the configured value.
+For production, serve the frontend separately and route `/api` to the Node server, or configure the backend CORS allowlist for the frontend origin.

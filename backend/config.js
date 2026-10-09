@@ -40,7 +40,7 @@ export const config = {
   wasteUrl: urlFromEnv('WASTE_API_URL'),
   assistantApiKey: process.env.AWS_BEARER_TOKEN_BEDROCK || process.env.OPENAI_API_KEY || '',
   assistantBaseUrl: urlFromEnv('OPENAI_BASE_URL', 'https://api.openai.com/v1'),
-  assistantModel: process.env.OPENAI_MODEL || 'gpt-oss-120b',
+  assistantModel: process.env.OPENAI_MODEL || 'openai.gpt-oss-120b',
   defaultLatitude: numberFromEnv('DEFAULT_LATITUDE', 28.9845),
   defaultLongitude: numberFromEnv('DEFAULT_LONGITUDE', 77.7064),
   corsOrigins: (process.env.CORS_ORIGINS || 'http://localhost:5173,http://127.0.0.1:5173')

@@ -80,7 +80,7 @@ function buildConversation(message, context, history) {
 
 async function requestModel({ messages, maxOutputTokens }) {
   if (!config.assistantApiKey) {
-    const error = new Error('Eco AI is not configured. Set AWS_BEARER_TOKEN_BEDROCK or OPENAI_API_KEY as a server environment variable (or in the project-root .env file locally).')
+    const error = new Error('Eco AI is not configured. Set AWS_BEARER_TOKEN_BEDROCK or OPENAI_API_KEY in the project-root .env file.')
     error.statusCode = 503
     throw error
   }
@@ -124,7 +124,7 @@ async function requestModel({ messages, maxOutputTokens }) {
 
 async function* requestModelStream({ messages, maxOutputTokens, signal }) {
   if (!config.assistantApiKey) {
-    const error = new Error('Eco AI is not configured. Set AWS_BEARER_TOKEN_BEDROCK or OPENAI_API_KEY as a server environment variable (or in the project-root .env file locally).')
+    const error = new Error('Eco AI is not configured. Set AWS_BEARER_TOKEN_BEDROCK or OPENAI_API_KEY in the project-root .env file.')
     error.statusCode = 503
     throw error
   }

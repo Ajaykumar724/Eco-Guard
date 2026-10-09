@@ -1,0 +1,25 @@
+[build]
+command = "npm run build"
+publish = "dist"
+
+[functions]
+directory = "netlify/functions"
+node_bundler = "esbuild"
+
+[[redirects]]
+from = "/api/environment"
+to = "/.netlify/functions/api?route=environment"
+status = 200
+force = true
+
+[[redirects]]
+from = "/api/assistant"
+to = "/.netlify/functions/api?route=assistant"
+status = 200
+force = true
+
+[[redirects]]
+from = "/api/recommendations"
+to = "/.netlify/functions/api?route=recommendations"
+status = 200
+force = true

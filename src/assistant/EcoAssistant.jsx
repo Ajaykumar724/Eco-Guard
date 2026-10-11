@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { streamAssistantMessage } from './api.js'
 
 function EcoAssistant({ context, open, onClose }) {
+  const messagesRef = useRef(null)
+  const abortControllerRef = useRef(null)
   const [messages, setMessages] = useState([{
     role: 'assistant',
     content: 'Hi! Ask me about your local conditions, health recommendations, recycling, energy, or any sustainability question.',
@@ -10,6 +13,15 @@ function EcoAssistant({ context, open, onClose }) {
   const [input, setInput] = useState('')
   const [pending, setPending] = useState(false)
   const [error, setError] = useState('')
+
+  useEffect(() => {
+    const messageList = messagesRef.current
+    if (messageList) messageList.scrollTop = messageList.scrollHeight
+  }, [messages, pending, error])
+
+  function stopResponse() {
+    abortControllerRef.current?.abort()
+  }
 
   async function handleSubmit(event) {
     event.preventDefault()
@@ -26,17 +38,59 @@ function EcoAssistant({ context, open, onClose }) {
     setInput('')
     setError('')
     setPending(true)
+    const controller = new AbortController()
+    abortControllerRef.current = controller
+    const wordQueue = []
+    let bufferedText = ''
+    let streamFinished = false
+
+    function queueWords(text, flush = false) {
+      bufferedText += text
+      const words = bufferedText.match(/\S+\s*|\s+/g) ?? []
+      if (!flush && words.length && !/\s$/.test(bufferedText)) {
+        bufferedText = words.pop()
+      } else {
+        bufferedText = ''
+      }
+      wordQueue.push(...words)
+      if (flush && bufferedText) {
+        wordQueue.push(bufferedText)
+        bufferedText = ''
+      }
+    }
+
+    async function renderWords() {
+      while (!controller.signal.aborted && (!streamFinished || wordQueue.length)) {
+        const word = wordQueue.shift()
+        if (word) {
+          setMessages((current) => current.map((item, index) => (
+            index === assistantIndex ? { ...item, content: item.content + word } : item
+          )))
+        }
+        await new Promise((resolve) => setTimeout(resolve, 35))
+      }
+    }
+
+    const rendering = renderWords()
     try {
       await streamAssistantMessage(
         { message, context: context ?? {}, history },
-        (chunk) => setMessages((current) => current.map((item, index) => (
-          index === assistantIndex ? { ...item, content: item.content + chunk } : item
-        ))),
+        (chunk) => queueWords(chunk),
+        controller.signal,
       )
+      queueWords('', true)
+      streamFinished = true
+      await rendering
     } catch (requestError) {
-      setError(requestError.message || 'Eco AI could not answer right now.')
-      setMessages((current) => current.filter((item, index) => index !== assistantIndex || item.content))
+      streamFinished = true
+      if (requestError.name !== 'AbortError') {
+        queueWords('', true)
+        await rendering
+        setError(requestError.message || 'Eco AI could not answer right now.')
+        setMessages((current) => current.filter((item, index) => index !== assistantIndex || item.content))
+      }
     } finally {
+      if (abortControllerRef.current === controller) abortControllerRef.current = null
       setPending(false)
     }
   }
@@ -52,11 +106,22 @@ function EcoAssistant({ context, open, onClose }) {
         </div>
         <button type="button" onClick={onClose} aria-label="Close EcoGuard AI assistant">×</button>
       </header>
-      <div className="assistant-messages" aria-live="polite" aria-relevant="additions text">
+      <div className="assistant-messages" ref={messagesRef} aria-live="polite" aria-relevant="additions text">
         {messages.map((item, index) => (
           <div className={`assistant-message ${item.role}`} key={`${item.role}-${index}`}>
             {item.content
-              ? <ReactMarkdown>{item.content}</ReactMarkdown>
+              ? <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    table: ({ children }) => (
+                      <div className="assistant-table">
+                        <table>{children}</table>
+                      </div>
+                    ),
+                  }}
+                >
+                  {item.content}
+                </ReactMarkdown>
               : pending && item.role === 'assistant' && <span role="status">Thinking…</span>}
           </div>
         ))}
@@ -72,7 +137,9 @@ function EcoAssistant({ context, open, onClose }) {
           maxLength={2000}
           disabled={pending}
         />
-        <button type="submit" aria-label="Send message" disabled={pending || !input.trim()}>↗</button>
+        {pending
+          ? <button className="assistant-stop" type="button" onClick={stopResponse} aria-label="Stop response" title="Stop response">■</button>
+          : <button type="submit" aria-label="Send message" disabled={!input.trim()}>↗</button>}
       </form>
     </section>
   )

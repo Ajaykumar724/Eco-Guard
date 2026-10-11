@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { streamAssistantMessage } from './api.js'
 
-function EcoAssistant({ context, open, onClose }) {
+function EcoAssistant({ context, open, onClose, initialPrompt }) {
   const messagesRef = useRef(null)
   const abortControllerRef = useRef(null)
+  const handledPromptRef = useRef(null)
   const [messages, setMessages] = useState([{
     role: 'assistant',
     content: 'Hi! Ask me about your local conditions, health recommendations, recycling, energy, or any sustainability question.',
@@ -23,9 +24,8 @@ function EcoAssistant({ context, open, onClose }) {
     abortControllerRef.current?.abort()
   }
 
-  async function handleSubmit(event) {
-    event.preventDefault()
-    const message = input.trim()
+  const sendMessage = useCallback(async (rawMessage) => {
+    const message = rawMessage.trim()
     if (!message || pending) return
 
     const history = messages.slice(-10).map(({ role, content }) => ({ role, content }))
@@ -60,7 +60,7 @@ function EcoAssistant({ context, open, onClose }) {
     }
 
     async function renderWords() {
-      while (!controller.signal.aborted && (!streamFinished || wordQueue.length)) {
+      while ((!controller.signal.aborted && !streamFinished) || wordQueue.length) {
         const word = wordQueue.shift()
         if (word) {
           setMessages((current) => current.map((item, index) => (
@@ -82,10 +82,10 @@ function EcoAssistant({ context, open, onClose }) {
       streamFinished = true
       await rendering
     } catch (requestError) {
+      queueWords('', true)
       streamFinished = true
+      await rendering
       if (requestError.name !== 'AbortError') {
-        queueWords('', true)
-        await rendering
         setError(requestError.message || 'Eco AI could not answer right now.')
         setMessages((current) => current.filter((item, index) => index !== assistantIndex || item.content))
       }
@@ -93,6 +93,20 @@ function EcoAssistant({ context, open, onClose }) {
       if (abortControllerRef.current === controller) abortControllerRef.current = null
       setPending(false)
     }
+  }, [context, messages, pending])
+
+  useEffect(() => {
+    if (!open || !initialPrompt || handledPromptRef.current === initialPrompt.id) return
+    handledPromptRef.current = initialPrompt.id
+    void sendMessage(initialPrompt.message)
+  }, [initialPrompt, open, sendMessage])
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    const message = input.trim()
+    if (!message || pending) return
+    setInput('')
+    void sendMessage(message)
   }
 
   if (!open) return null
@@ -101,7 +115,7 @@ function EcoAssistant({ context, open, onClose }) {
     <section className="assistant-drawer" id="eco-assistant-panel" aria-label="EcoGuard AI assistant">
       <header className="assistant-header">
         <div>
-          <strong><span aria-hidden="true">◉</span> EcoGuard AI</strong>
+          <strong><i className="fa-solid fa-robot" aria-hidden="true" /> EcoGuard AI</strong>
           <small>Ask anything about your environment</small>
         </div>
         <button type="button" onClick={onClose} aria-label="Close EcoGuard AI assistant">×</button>

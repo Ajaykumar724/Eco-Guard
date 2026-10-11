@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { EnvironmentCard } from './components/EnvironmentCard.jsx'
 import EcoAssistant from './assistant/EcoAssistant.jsx'
+import InlineEcoInsight from './assistant/InlineEcoInsight.jsx'
 import { fetchRecommendations } from './assistant/api.js'
 import logo from './assets/logo.png'
 import { useEnvironmentData } from './hooks/useEnvironmentData.js'
@@ -11,8 +12,8 @@ import wasteManagementData from './ecoguard_waste_management_up_haryana_delhi.js
 import './App.css'
 
 const navigation = [
-  ['⌂', 'Dashboard'],
-  ['◉', 'AI Eco Coach'],
+  [<i className="fa-regular fa-house" aria-hidden="true" />, 'Dashboard'],
+  [<i className="fa-solid fa-robot" aria-hidden="true" />, 'AI Eco Coach'],
 ]
 
 function normalizeCityName(city) {
@@ -72,6 +73,7 @@ function App() {
   const [challengeProgress, setChallengeProgress] = useState({ date: '', selectedAnswer: '', completed: false, feedback: '' })
   const [selectedCity, setSelectedCity] = useState('')
   const [assistantOpen, setAssistantOpen] = useState(false)
+  const [assistantPrompt, setAssistantPrompt] = useState(null)
   const [recommendationState, setRecommendationState] = useState({ context: null, items: [], error: '' })
   const dailyChallenge = challengeData.challenges.find(({ date }) => date === getLocalDateKey())
   const currentChallengeProgress = challengeProgress.date === dailyChallenge?.date
@@ -109,6 +111,21 @@ function App() {
       message: selectedCity ? 'No city data' : 'Select a city',
       detail: selectedCity ? 'Waste data unavailable' : 'Choose a city',
     }
+  const insightContext = {
+    air,
+    heat,
+    water: waterSource,
+    waste: wasteSource,
+    location: {
+      city: selectedCity || null,
+      coordinates: currentLocation,
+    },
+    updatedAt: environmentData?.updatedAt ?? null,
+  }
+  function openAssistantWithPrompt(message) {
+    setAssistantPrompt((current) => ({ id: (current?.id ?? 0) + 1, message }))
+    setAssistantOpen(true)
+  }
 
   useEffect(() => {
     if (!environmentData) return undefined
@@ -185,7 +202,7 @@ function App() {
               aria-expanded={assistantOpen}
               onClick={() => setAssistantOpen((open) => !open)}
               title="Ask EcoGuard AI"
-            >◉</button> */}
+            ><i className="fa-solid fa-robot" aria-hidden="true" /></button> */}
             {/* <button className="user-menu" type="button" onClick={() => setActiveNav('Profile')}><span className="avatar">A</span><span className="user-copy"><strong>Ajay Kumar</strong><small>Eco Protector</small></span><span className="chevron">⌄</span></button> */}
             <div className="city-data-picker">
               <label>
@@ -209,9 +226,10 @@ function App() {
         </header>
 
         <EcoAssistant
-          context={environmentData}
+          context={insightContext}
           open={assistantOpen}
           onClose={() => setAssistantOpen(false)}
+          initialPrompt={assistantPrompt}
         />
 
         <main className="dashboard-content">
@@ -224,14 +242,46 @@ function App() {
           <section className="dashboard-grid">
             <div className="column column-left">
               <div className="metric-grid">
-                <EnvironmentCard type="air" icon="≋" title="AIR" source={environmentData?.air} loading={environmentLoading} />
-                <EnvironmentCard type="heat" icon="☼" title="HEAT" source={environmentData?.heat} loading={environmentLoading} />
-                <EnvironmentCard type="water" icon="♆" title="WATER" source={waterSource} />
-                <EnvironmentCard type="waste" icon="♻" title="WASTE" source={wasteSource} />
+                <div className="metric-insight-item">
+                  <EnvironmentCard type="air" icon=<i class="fa-solid fa-wind"></i> title="AIR" source={air} loading={environmentLoading} />
+                  <InlineEcoInsight
+                    className="metric-eco-insight"
+                    context={insightContext}
+                    onMoreDetails={openAssistantWithPrompt}
+                    prompt={`My current local air quality is ${air?.available ? `${Math.round(air.value)} AQI (${air.status})${Number.isFinite(air.pm25) ? `, PM2.5 ${air.pm25} µg/m³` : ''}${Number.isFinite(air.pm10) ? `, PM10 ${air.pm10} µg/m³` : ''}` : 'unavailable'}${selectedCity ? ` for ${selectedCity}` : currentLocation ? ` near coordinates ${currentLocation.latitude.toFixed(3)}, ${currentLocation.longitude.toFixed(3)}` : ''}. Explain what this AQI level means, possible common contributors without claiming unverified local causes, and practical health-protection and pollution-reduction suggestions.`}
+                  />
+                </div>
+                <div className="metric-insight-item">
+                  <EnvironmentCard type="heat" icon=<i class="fa-solid fa-temperature-high"></i> title="HEAT" source={heat} loading={environmentLoading} />
+                  <InlineEcoInsight
+                    className="metric-eco-insight"
+                    context={insightContext}
+                    onMoreDetails={openAssistantWithPrompt}
+                    prompt={`My current local temperature is ${heat?.available ? `${heat.value.toFixed(1)}°C (${heat.status})` : 'unavailable'}${selectedCity ? ` in ${selectedCity}` : currentLocation ? ` near coordinates ${currentLocation.latitude.toFixed(3)}, ${currentLocation.longitude.toFixed(3)}` : ''}. Explain what this means in terms of heat comfort or risk and provide practical heat-safety and energy-conscious cooling suggestions. Do not infer a heatwave from this single reading.`}
+                  />
+                </div>
+                <div className="metric-insight-item">
+                  <EnvironmentCard type="water" icon=<i class="fa-solid fa-hand-holding-droplet"></i> title="WATER" source={waterSource} />
+                  <InlineEcoInsight
+                    className="metric-eco-insight"
+                    context={insightContext}
+                    onMoreDetails={openAssistantWithPrompt}
+                    prompt={`Explain the dashboard's water-quality information${selectedCity ? ` for ${selectedCity}` : ''}: ${JSON.stringify(waterSource)}. Describe what this indicative status or pH range can and cannot tell us, avoid claiming the water is safe to drink without verified testing, and suggest sensible next steps.`}
+                  />
+                </div>
+                <div className="metric-insight-item">
+                  <EnvironmentCard type="waste" icon=<i class="fa-solid fa-recycle"></i> title="WASTE" source={wasteSource} />
+                  <InlineEcoInsight
+                    className="metric-eco-insight"
+                    context={insightContext}
+                    onMoreDetails={openAssistantWithPrompt}
+                    prompt={`Explain the dashboard's waste-management information${selectedCity ? ` for ${selectedCity}` : ''}: ${JSON.stringify(wasteSource)}. Clarify the meaning and any data-confidence limitations, then give practical ways residents and local authorities can improve waste reduction, segregation, recycling, and processing.`}
+                  />
+                </div>
               </div>
 
               <section className={`risk-alert air-quality-summary ${riskClass}`} aria-label="Air quality summary">
-                <span className="risk-icon" aria-hidden="true">≋</span>
+                <span className="risk-icon" aria-hidden="true"><i class="fa-solid fa-wind"></i></span>
                 <div className="air-quality-copy">
                   <strong>{environmentLoading ? 'AIR QUALITY · UPDATING' : air?.available ? `AIR QUALITY · ${air.status.toUpperCase()}` : 'AIR QUALITY · DATA UNAVAILABLE'}</strong>
                   <p>{air?.available
@@ -250,7 +300,7 @@ function App() {
 
               <section className="panel recommendation-panel">
                 <PanelTitle
-                  icon="♧"
+                  icon=<i class="fa-regular fa-lightbulb"></i>
                 >
                   Today’s Recommendations
                 </PanelTitle>
@@ -267,7 +317,7 @@ function App() {
                           return (
                             <li key={`${index}-${text}`}>
                               <span className={`recommendation-icon ${['coral', 'green', 'blue', 'lime'][index]}`} aria-hidden="true">
-                                {['!', '♣', '♆', '♻'][index]}
+                                {[<i class="fa-regular fa-1"></i>, <i class="fa-regular fa-2"></i>, <i class="fa-regular fa-3"></i>, <i class="fa-regular fa-4"></i>][index]}
                               </span>
                               <span className="recommendation-copy">
                                 <strong>{title}</strong>
@@ -298,7 +348,7 @@ function App() {
 
             <div className="column column-middle">
               <section className="panel challenge-panel">
-                <PanelTitle icon="♧">Today’s Eco Challenge</PanelTitle>
+                <PanelTitle icon=<i class="fa-regular fa-lightbulb"></i>>Today’s Eco Challenge</PanelTitle>
                 {dailyChallenge ? (
                   <>
                     <div className="challenge-points">✦ +{dailyChallenge.points} Points</div>
@@ -351,6 +401,12 @@ function App() {
                         {currentChallengeProgress.feedback}
                       </p>
                     )}
+                    <InlineEcoInsight
+                      className="challenge-eco-insight"
+                      context={insightContext}
+                      onMoreDetails={openAssistantWithPrompt}
+                      prompt={`Explain today's environmental challenge, "${dailyChallenge.title}": ${dailyChallenge.question} The options are ${dailyChallenge.options.map(({ id, text }) => `${id}: ${text}`).join('; ')}. The correct answer is ${dailyChallenge.answer}: ${dailyChallenge.options.find(({ id }) => id === dailyChallenge.answer)?.text}. Explain why this is the best environmental choice, its real-world impact, and one practical way to apply it.`}
+                    />
                   </>
                 ) : (
                   <p className="challenge-feedback" role="status">No Eco Challenge is scheduled for today. Check back tomorrow!</p>
@@ -401,7 +457,7 @@ function App() {
                     ['NO₂', air?.available && Number.isFinite(air.no2) ? `${air.no2} µg/m³` : '—', 'Nitrogen dioxide', 'no2'],
                   ].map(([label, value, detail, type]) => (
                     <div className={`air-reading air-reading-${type}`} key={label}>
-                      <span aria-hidden="true">{type === 'air' ? '≋' : type === 'pm25' ? '⠿' : type === 'pm10' ? '✣' : '♧'}</span>
+                      <span aria-hidden="true">{type === 'air' ? <i class="fa-solid fa-wind"></i> : type === 'pm25' ? '⠿' : type === 'pm10' ? '✣' : <i class="fa-regular fa-lightbulb"></i>}</span>
                       <div><small>{label}</small><strong>{value}</strong><em>{detail}</em></div>
                     </div>
                   ))}
@@ -443,7 +499,7 @@ function App() {
               </section> */}
 
               <section className="panel coach-panel">
-                <PanelTitle icon="◉">Eco Coach</PanelTitle>
+                <PanelTitle icon={<i className="fa-solid fa-robot" aria-hidden="true" />}>Eco Coach</PanelTitle>
                 <p className="coach-description">Your AI assistant can answer questions using current environmental readings and general sustainability guidance.</p>
                 <button className="outline-button" type="button" onClick={() => setAssistantOpen(true)}>Ask EcoGuard AI →</button>
               </section>
